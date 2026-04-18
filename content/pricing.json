@@ -5,55 +5,55 @@
   "subtitle": "Pas de frais cachés, pas d'engagement long. Vous payez en fonction de vos besoins — et on s'occupe de tout, du design à l'intégration.",
   "plans": [
     {
-      "name": "Essentiel",
-      "subtitle": "Lancez votre carte de fidélité digitale en quelques jours",
-      "price_prefix": "dès",
-      "amount": "49",
       "period": "CHF / mois",
+      "cta_label": "Nous contacter",
+      "price_prefix": "dès",
+      "name": "Essentiel",
       "featured": false,
+      "subtitle": "Lancez votre carte de fidélité digitale en quelques jours",
+      "amount": "49",
+      "cta_href": "#contact",
       "features": [
         "Carte digitale Apple/Google Wallet",
         "Jusqu'à 500 clients",
         "Système de points simple",
         "Support par email"
-      ],
-      "cta_label": "Nous contacter",
-      "cta_href": "#contact"
+      ]
     },
     {
-      "name": "Premium",
-      "subtitle": "Notre solution complète pour les commerces ambitieux",
-      "price_prefix": "",
-      "amount": "89",
       "period": "CHF / mois",
+      "cta_label": "En savoir plus",
+      "price_prefix": "",
+      "name": "Premium",
       "featured": true,
+      "subtitle": "Notre solution complète pour les commerces ambitieux",
+      "amount": "99",
       "tag": "Le + populaire",
+      "cta_href": "#contact",
       "features": [
         "Tout Essentiel, sans limite de clients",
         "Notifications push illimitées",
         "Cashback & récompenses avancées",
         "Tableau de bord analytics complet",
         "Support prioritaire"
-      ],
-      "cta_label": "En savoir plus",
-      "cta_href": "#contact"
+      ]
     },
     {
-      "name": "Enterprise",
-      "subtitle": "Pour les réseaux multi-enseignes et franchises",
-      "price_prefix": "",
-      "amount": "149",
       "period": "CHF / mois",
+      "cta_label": "En savoir plus",
+      "price_prefix": "",
+      "name": "Enterprise",
       "featured": false,
+      "subtitle": "Pour les réseaux multi-enseignes et franchises",
+      "amount": "149",
+      "cta_href": "#contact",
       "features": [
         "Tout Premium inclus",
         "Multi-points de vente illimités",
         "Intégrations API sur mesure",
         "White-label disponible",
         "Account manager dédié"
-      ],
-      "cta_label": "En savoir plus",
-      "cta_href": "#contact"
+      ]
     }
   ]
 }
