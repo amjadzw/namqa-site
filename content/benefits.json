@@ -1,0 +1,28 @@
+{
+  "eyebrow": "La solution Namqa",
+  "title_before": "Pensée pour le",
+  "title_accent": "commerce moderne",
+  "subtitle": "Choisissez l'étape qui vous intéresse pour découvrir comment Namqa transforme votre relation client.",
+  "items": [
+    {
+      "number": "01",
+      "title": "Récompensez vos clients fidèles",
+      "text": "Vos clients cumulent des points à chaque passage. Paliers, récompenses personnalisées, cashback : vous créez la mécanique qui fonctionne pour votre commerce. Plus ludique qu'une carte à tampons, infiniment plus efficace."
+    },
+    {
+      "number": "02",
+      "title": "Pilotez vos données en temps réel",
+      "text": "Tableau de bord clair : fréquence de visite, panier moyen, produits préférés, clients VIP. Prenez des décisions basées sur la réalité, pas sur l'intuition."
+    },
+    {
+      "number": "03",
+      "title": "Réactivez avec la notification push",
+      "text": "Un client n'est pas revenu depuis 30 jours ? Envoyez-lui une offre automatique directement sur son écran verrouillé. Taux d'ouverture 10× supérieur à l'email."
+    },
+    {
+      "number": "04",
+      "title": "Fidélité multi-points de vente",
+      "text": "Plusieurs boutiques ou établissements ? Vos clients cumulent partout, vous pilotez chaque point de vente indépendamment. Un vrai réseau, une seule carte."
+    }
+  ]
+}

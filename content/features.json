@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Fonctionnalités",
+  "title_before": "Tout ce qu'il faut pour",
+  "title_accent": "fidéliser vraiment",
+  "subtitle": "Une plateforme complète pour lancer, piloter et développer votre programme de fidélité — sans développeur, sans friction.",
+  "items": [
+    {
+      "icon": "wallet",
+      "title": "Apple & Google Wallet",
+      "text": "Votre carte de fidélité directement dans le portefeuille natif du smartphone. Zéro app à télécharger."
+    },
+    {
+      "icon": "users",
+      "title": "Base de données centralisée",
+      "text": "Accédez en temps réel à la liste de vos clients fidèles, leurs habitudes et leur historique d'achats."
+    },
+    {
+      "icon": "bell-ring",
+      "title": "Notifications push",
+      "text": "Envoyez des offres ciblées directement sur l'écran verrouillé. Taux d'ouverture jusqu'à 85%."
+    },
+    {
+      "icon": "qr-code",
+      "title": "QR code & scan caisse",
+      "text": "Vos clients scannent, vous créditez. Compatible avec tous les logiciels de caisse et canaux de vente."
+    }
+  ]
+}

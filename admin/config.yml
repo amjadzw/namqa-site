@@ -1,0 +1,269 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "assets/images/uploads"
+public_folder: "/assets/images/uploads"
+
+locale: "fr"
+
+publish_mode: simple
+
+# ================== COLLECTIONS ==================
+collections:
+  # ---------- NAVIGATION ----------
+  - name: "nav"
+    label: "🧭 Navigation"
+    files:
+      - name: "nav"
+        label: "Barre de navigation"
+        file: "content/nav.json"
+        format: "json"
+        fields:
+          - { label: "Téléphone affiché", name: "phone_display", widget: "string" }
+          - { label: "Lien téléphone (tel:...)", name: "phone_href", widget: "string" }
+          - { label: "Libellé du bouton principal", name: "cta_label", widget: "string" }
+          - { label: "Lien du bouton principal", name: "cta_href", widget: "string" }
+          - label: "Menu"
+            name: "menu"
+            widget: "list"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "Lien (#ancre ou URL)", name: "href", widget: "string" }
+
+  # ---------- HERO ----------
+  - name: "hero"
+    label: "🎯 Hero (haut de page)"
+    files:
+      - name: "hero"
+        label: "Section Hero"
+        file: "content/hero.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre (eyebrow)", name: "eyebrow", widget: "string" }
+          - { label: "Titre — partie avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — mot en orange (accent)", name: "title_accent", widget: "string" }
+          - { label: "Titre — partie après l'accent", name: "title_after", widget: "string" }
+          - label: "Points clés (bullets)"
+            name: "bullets"
+            widget: "list"
+            field: { label: "Texte du point", name: "text", widget: "string" }
+          - { label: "Bouton principal — libellé", name: "cta_primary_label", widget: "string" }
+          - { label: "Bouton principal — lien", name: "cta_primary_href", widget: "string" }
+          - { label: "Bouton secondaire — libellé", name: "cta_secondary_label", widget: "string" }
+          - { label: "Bouton secondaire — lien", name: "cta_secondary_href", widget: "string" }
+          - { label: "Notification — titre", name: "notif_title", widget: "string" }
+          - { label: "Notification — texte", name: "notif_text", widget: "string" }
+          - { label: "Badge — libellé", name: "badge_label", widget: "string" }
+          - { label: "Badge — valeur", name: "badge_value", widget: "string" }
+          - { label: "Badge — unité", name: "badge_unit", widget: "string" }
+          - { label: "Texte d'indication (hint)", name: "hint_text", widget: "string" }
+
+  # ---------- MARQUEE / LOGOS ----------
+  - name: "marquee"
+    label: "🏢 Bandeau commerces"
+    files:
+      - name: "marquee"
+        label: "Bandeau défilant"
+        file: "content/marquee.json"
+        format: "json"
+        fields:
+          - { label: "Partie en gras (+200 commerces)", name: "label_strong", widget: "string" }
+          - { label: "Reste de la phrase", name: "label_rest", widget: "string" }
+          - label: "Noms des commerces"
+            name: "items"
+            widget: "list"
+            field: { label: "Nom du commerce", name: "name", widget: "string" }
+
+  # ---------- FEATURES ----------
+  - name: "features"
+    label: "⭐ Fonctionnalités"
+    files:
+      - name: "features"
+        label: "Section Fonctionnalités"
+        file: "content/features.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Cartes de fonctionnalités"
+            name: "items"
+            widget: "list"
+            fields:
+              - label: "Icône (Lucide)"
+                name: "icon"
+                widget: "select"
+                options: ["wallet", "users", "bell-ring", "qr-code", "bell", "star", "heart", "gift", "trophy", "zap", "shield", "smartphone", "credit-card"]
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+
+  # ---------- BENEFITS ----------
+  - name: "benefits"
+    label: "💡 Bénéfices (solution)"
+    files:
+      - name: "benefits"
+        label: "Section Bénéfices"
+        file: "content/benefits.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Bénéfices (4 max recommandé)"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Numéro (ex: 01)", name: "number", widget: "string" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+
+  # ---------- PRICING ----------
+  - name: "pricing"
+    label: "💰 Tarifs"
+    files:
+      - name: "pricing"
+        label: "Section Tarifs"
+        file: "content/pricing.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Formules tarifaires"
+            name: "plans"
+            widget: "list"
+            fields:
+              - { label: "Nom de l'offre", name: "name", widget: "string" }
+              - { label: "Sous-titre de l'offre", name: "subtitle", widget: "text" }
+              - { label: "Préfixe prix (ex: dès)", name: "price_prefix", widget: "string", required: false }
+              - { label: "Montant", name: "amount", widget: "string" }
+              - { label: "Période (ex: CHF / mois)", name: "period", widget: "string" }
+              - { label: "Offre mise en avant ?", name: "featured", widget: "boolean", default: false }
+              - { label: "Étiquette (si mise en avant)", name: "tag", widget: "string", required: false }
+              - label: "Liste des avantages"
+                name: "features"
+                widget: "list"
+                field: { label: "Avantage", name: "feature", widget: "string" }
+              - { label: "Libellé du bouton", name: "cta_label", widget: "string" }
+              - { label: "Lien du bouton", name: "cta_href", widget: "string" }
+
+  # ---------- STEPS ----------
+  - name: "steps"
+    label: "📋 Comment ça marche"
+    files:
+      - name: "steps"
+        label: "Section Étapes + bannière CTA"
+        file: "content/steps.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Étapes"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Numéro (ex: 01)", name: "number", widget: "string" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte", name: "text", widget: "text" }
+          - { label: "Bannière CTA — titre avant accent", name: "cta_banner_title_before", widget: "string" }
+          - { label: "Bannière CTA — accent (orange)", name: "cta_banner_title_accent", widget: "string" }
+          - { label: "Bannière CTA — libellé bouton", name: "cta_banner_label", widget: "string" }
+          - { label: "Bannière CTA — lien bouton", name: "cta_banner_href", widget: "string" }
+
+  # ---------- TESTIMONIALS ----------
+  - name: "testimonials"
+    label: "💬 Témoignages & note"
+    files:
+      - name: "testimonials"
+        label: "Section Témoignages"
+        file: "content/testimonials.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Note globale (ex: 5,0)", name: "rating", widget: "string" }
+          - { label: "Libellé de la note", name: "rating_label", widget: "string" }
+          - label: "Témoignages"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Citation", name: "quote", widget: "text" }
+              - { label: "Nom du commerce", name: "brand", widget: "string" }
+              - { label: "Rôle / Personne", name: "role", widget: "string" }
+              - { label: "Initiales (2 lettres)", name: "initials", widget: "string", pattern: ['^.{1,3}$', 'Max 3 caractères'] }
+
+  # ---------- FAQ ----------
+  - name: "faq"
+    label: "❓ FAQ"
+    files:
+      - name: "faq"
+        label: "Section FAQ"
+        file: "content/faq.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre — avant le lien", name: "subtitle_before", widget: "string" }
+          - { label: "Sous-titre — texte du lien", name: "subtitle_link_label", widget: "string" }
+          - { label: "Sous-titre — URL du lien", name: "subtitle_link_href", widget: "string" }
+          - { label: "Sous-titre — après le lien", name: "subtitle_after", widget: "string" }
+          - label: "Questions / Réponses"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Question", name: "question", widget: "string" }
+              - { label: "Réponse", name: "answer", widget: "text" }
+
+  # ---------- FINAL CTA ----------
+  - name: "final_cta"
+    label: "🚀 CTA final"
+    files:
+      - name: "final_cta"
+        label: "Bloc CTA final"
+        file: "content/final_cta.json"
+        format: "json"
+        fields:
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Titre — fin (ex: .)", name: "title_after", widget: "string" }
+          - { label: "Libellé du bouton", name: "cta_label", widget: "string" }
+          - { label: "Lien du bouton (email/URL)", name: "cta_href", widget: "string" }
+          - { label: "Micro-texte sous le bouton", name: "microcopy", widget: "string" }
+
+  # ---------- FOOTER ----------
+  - name: "footer"
+    label: "🦶 Pied de page"
+    files:
+      - name: "footer"
+        label: "Footer"
+        file: "content/footer.json"
+        format: "json"
+        fields:
+          - { label: "Phrase d'accroche", name: "tagline", widget: "text" }
+          - { label: "Mention copyright", name: "copyright", widget: "string" }
+          - label: "Colonnes de liens"
+            name: "columns"
+            widget: "list"
+            fields:
+              - { label: "Titre de la colonne", name: "heading", widget: "string" }
+              - label: "Liens"
+                name: "links"
+                widget: "list"
+                fields:
+                  - { label: "Libellé", name: "label", widget: "string" }
+                  - { label: "URL", name: "href", widget: "string" }
+          - label: "Liens légaux (bas de page)"
+            name: "legal_links"
+            widget: "list"
+            fields:
+              - { label: "Libellé", name: "label", widget: "string" }
+              - { label: "URL", name: "href", widget: "string" }

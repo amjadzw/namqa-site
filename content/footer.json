@@ -1,0 +1,48 @@
+{
+  "tagline": "La fidélité digitale pensée pour les commerces suisses. Simple, moderne, efficace.",
+  "copyright": "© 2026 Namqa Studio. Tous droits réservés.",
+  "columns": [
+    {
+      "heading": "Solution",
+      "links": [
+        { "label": "Fonctionnalités", "href": "#fonctionnalites" },
+        { "label": "Tarifs", "href": "#tarifs" },
+        { "label": "Comment ça marche", "href": "#how" },
+        { "label": "FAQ", "href": "#faq" }
+      ]
+    },
+    {
+      "heading": "Secteurs",
+      "links": [
+        { "label": "Restaurants & cafés", "href": "#" },
+        { "label": "Boutiques", "href": "#" },
+        { "label": "Salons & instituts", "href": "#" },
+        { "label": "Fitness & bien-être", "href": "#" }
+      ]
+    },
+    {
+      "heading": "Entreprise",
+      "links": [
+        { "label": "À propos", "href": "#" },
+        { "label": "Blog", "href": "#" },
+        { "label": "Partenaires", "href": "#" },
+        { "label": "Carrières", "href": "#" }
+      ]
+    },
+    {
+      "heading": "Contact",
+      "links": [
+        { "label": "contact@namqa.studio", "href": "mailto:contact@namqa.studio" },
+        { "label": "+41 27 000 00 00", "href": "tel:+41270000000" },
+        { "label": "Sion, Valais · CH", "href": "#" },
+        { "label": "Demander une démo", "href": "#contact" }
+      ]
+    }
+  ],
+  "legal_links": [
+    { "label": "Mentions légales", "href": "#" },
+    { "label": "CGU", "href": "#" },
+    { "label": "Cookies", "href": "#" },
+    { "label": "Confidentialité", "href": "#" }
+  ]
+}

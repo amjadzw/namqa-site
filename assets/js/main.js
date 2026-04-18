@@ -1,8 +1,10 @@
 /* ==========================================================
    NAMQA — Main interactions
+   Waits for the CMS loader to inject dynamic content,
+   then wires up all interactivity on the freshly-rendered DOM.
    ========================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function __namqaInit() {
   // Lucide icons
   if (window.lucide) lucide.createIcons();
 
@@ -101,4 +103,16 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
+}
+
+if (window.__namqaContentReady) {
+  __namqaInit();
+} else {
+  document.addEventListener('namqa:content-ready', __namqaInit, { once: true });
+  // Safety net: if the loader fails to fire for any reason, still init after DOMContentLoaded + 2s
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      if (!window.__namqaContentReady) __namqaInit();
+    }, 2500);
+  });
+}

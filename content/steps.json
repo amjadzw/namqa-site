@@ -1,0 +1,27 @@
+{
+  "eyebrow": "Comment ça marche",
+  "title_before": "Opérationnel en",
+  "title_accent": "5 minutes",
+  "subtitle": "Pas de développeur, pas de prise de tête. On vous accompagne du setup au premier client fidélisé.",
+  "cta_banner_title_before": "Offrez à vos clients une expérience",
+  "cta_banner_title_accent": "digne de 2026",
+  "cta_banner_label": "Essayer Namqa",
+  "cta_banner_href": "#contact",
+  "items": [
+    {
+      "number": "01",
+      "title": "Paramétrez votre carte",
+      "text": "Choisissez vos couleurs, vos récompenses et votre mécanique de points. On s'occupe du reste, du design Wallet à l'intégration."
+    },
+    {
+      "number": "02",
+      "title": "Proposez-la à vos clients",
+      "text": "Un QR code à l'accueil, un lien sur votre site ou un SMS : vos clients ajoutent leur carte à leur Wallet en 3 secondes, sans app."
+    },
+    {
+      "number": "03",
+      "title": "Récompensez à chaque visite",
+      "text": "Scan du QR, points crédités automatiquement, notification envoyée. Vos clients reviennent. Vos chiffres montent."
+    }
+  ]
+}

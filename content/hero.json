@@ -1,0 +1,21 @@
+{
+  "eyebrow": "Programme de fidélité digital",
+  "title_before": "Des cartes",
+  "title_accent": "digitales",
+  "title_after": "qui changent tout.",
+  "bullets": [
+    "Fidélisez vos clients sans jamais imprimer une carte",
+    "Offrez une expérience Apple Wallet & Google Wallet native",
+    "Démarquez-vous avec une solution premium sans app à télécharger"
+  ],
+  "cta_primary_label": "Je veux essayer",
+  "cta_primary_href": "#contact",
+  "cta_secondary_label": "Voir la démo",
+  "cta_secondary_href": "#how",
+  "notif_title": "Notification push",
+  "notif_text": "+50 points gagnés",
+  "badge_label": "Solde fidélité",
+  "badge_value": "1 240",
+  "badge_unit": "pts",
+  "hint_text": "Glissez pour faire tourner"
+}

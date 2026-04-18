@@ -1,0 +1,46 @@
+{
+  "eyebrow": "Ils nous font confiance",
+  "title_before": "Des commerces qui",
+  "title_accent": "cartonnent",
+  "subtitle": "Ils ont troqué leurs cartes papier contre Namqa. Voici leur retour.",
+  "rating": "5,0",
+  "rating_label": "Note moyenne — Avis clients Namqa",
+  "items": [
+    {
+      "quote": "On a abandonné les cartes à tampons du jour au lendemain. Résultat : +32% de clients réguliers en 4 mois. La notification push, c'est magique.",
+      "brand": "Café des Alpes",
+      "role": "Chloé, gérante",
+      "initials": "CA"
+    },
+    {
+      "quote": "L'installation a pris 10 minutes. Mes clients adorent avoir leur carte directement dans le Wallet. Zéro friction, c'est exactement ce que je cherchais.",
+      "brand": "Pizzeria Rossi",
+      "role": "Marco, fondateur",
+      "initials": "PR"
+    },
+    {
+      "quote": "Le tableau de bord nous a ouvert les yeux sur qui sont vraiment nos clients fidèles. On a pu lancer des campagnes ciblées qui ont triplé notre ROI.",
+      "brand": "Boutique Lumière",
+      "role": "Sophie, co-fondatrice",
+      "initials": "BL"
+    },
+    {
+      "quote": "En tant que réseau de 7 salons, Namqa nous permet de piloter chaque établissement tout en offrant une expérience unifiée à nos clients. Un vrai bijou.",
+      "brand": "Coiffure Luna",
+      "role": "Nathan, directeur",
+      "initials": "CL"
+    },
+    {
+      "quote": "On avait peur que nos clients âgés ne s'adaptent pas. Finalement, tout le monde trouve ça simple. Même ma maman de 72 ans utilise sa carte Namqa.",
+      "brand": "Maison Sion",
+      "role": "Thomas, gérant",
+      "initials": "MS"
+    },
+    {
+      "quote": "Le support est dingue. Une question le dimanche soir, réponse dans l'heure. On sent qu'ils sont vraiment investis dans notre succès.",
+      "brand": "Fitness Plus",
+      "role": "Laura, manager",
+      "initials": "FP"
+    }
+  ]
+}

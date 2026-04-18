@@ -1,0 +1,13 @@
+{
+  "phone_display": "+41 27 000 00 00",
+  "phone_href": "tel:+41270000000",
+  "cta_label": "Demander une démo",
+  "cta_href": "#contact",
+  "menu": [
+    { "label": "Solution", "href": "#solution" },
+    { "label": "Fonctionnalités", "href": "#fonctionnalites" },
+    { "label": "Tarifs", "href": "#tarifs" },
+    { "label": "Clients", "href": "#temoignages" },
+    { "label": "FAQ", "href": "#faq" }
+  ]
+}

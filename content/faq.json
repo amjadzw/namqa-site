@@ -1,0 +1,43 @@
+{
+  "eyebrow": "Questions fréquentes",
+  "title_before": "Tout ce que",
+  "title_accent": "vous vous demandez",
+  "subtitle_before": "Pas trouvé la réponse ?",
+  "subtitle_link_label": "Contactez-nous",
+  "subtitle_link_href": "#contact",
+  "subtitle_after": "— on répond en moins de 2h.",
+  "items": [
+    {
+      "question": "Mes clients doivent-ils télécharger une application ?",
+      "answer": "Non, et c'est tout l'intérêt. La carte Namqa s'ajoute directement dans Apple Wallet ou Google Wallet, l'application native déjà présente sur chaque smartphone. En 3 secondes, votre client a sa carte de fidélité sans rien installer."
+    },
+    {
+      "question": "Combien de temps pour lancer mon programme ?",
+      "answer": "5 minutes pour paramétrer votre carte, quelques heures pour valider le design avec notre équipe, et vous êtes en ligne. Certains commerces démarrent leur fidélisation dans la journée même où ils souscrivent."
+    },
+    {
+      "question": "Comment mes clients ajoutent leur carte ?",
+      "answer": "Trois façons : un QR code à votre comptoir, un lien sur votre site web ou réseaux sociaux, ou un SMS envoyé depuis votre tableau de bord. Un tap et leur carte est dans le Wallet."
+    },
+    {
+      "question": "Puis-je envoyer des messages à mes clients ?",
+      "answer": "Oui. Depuis votre tableau de bord, vous envoyez des notifications push directement sur l'écran verrouillé de vos clients. Promotions, événements, rappels — avec un taux d'ouverture autour de 85%, soit 10× plus que l'email."
+    },
+    {
+      "question": "Namqa s'intègre-t-il à ma caisse ?",
+      "answer": "La solution fonctionne de manière autonome via scan QR. Pour les formules Premium et Enterprise, nous proposons des intégrations API avec les principaux logiciels de caisse du marché suisse (Lightspeed, Gastrofix, SumUp, etc.)."
+    },
+    {
+      "question": "Est-ce conforme au RGPD et à la LPD suisse ?",
+      "answer": "Totalement. Les données de vos clients sont hébergées en Suisse, chiffrées, et vous restez maître de leur usage. Nous fournissons les modèles de consentement et les exports nécessaires en cas de demande client."
+    },
+    {
+      "question": "Puis-je avoir plusieurs points de vente ?",
+      "answer": "Oui, dès la formule Enterprise. Vos clients cumulent leurs points dans tous vos établissements avec la même carte. Vous pilotez chaque point de vente indépendamment tout en gardant une vue d'ensemble."
+    },
+    {
+      "question": "Y a-t-il un engagement ?",
+      "answer": "Non. Toutes nos formules sont sans engagement, résiliables à tout moment. On préfère vous garder parce qu'on vous apporte de la valeur — pas parce que vous êtes coincé dans un contrat."
+    }
+  ]
+}
