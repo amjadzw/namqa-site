@@ -1,0 +1,643 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Namqa Studio — La carte de fidélité 100% digitale dans Apple Wallet & Google Wallet. Sans app, sans friction. Pour restaurants, boutiques et commerces modernes." />
+  <meta name="theme-color" content="#2E2B7A" />
+  <meta property="og:title" content="Namqa Studio — Programme de fidélité digital" />
+  <meta property="og:description" content="Des cartes digitales qui changent tout. Dans Apple Wallet & Google Wallet, sans application à télécharger." />
+  <title>Namqa Studio — Programme de fidélité digital</title>
+
+  <link rel="icon" type="image/png" href="assets/images/namqa-logo-dark.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+
+  <!-- Lucide icons -->
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
+
+  <!-- Three.js import map for iPhone 3D -->
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+    }
+  }
+  </script>
+</head>
+<body>
+
+  <!-- =============== NAVIGATION =============== -->
+  <nav class="nav" id="nav" aria-label="Navigation principale">
+    <a href="#" class="nav__logo" aria-label="Accueil Namqa Studio">
+      <img src="assets/images/namqa-logo-dark.png" alt="Namqa Studio" />
+    </a>
+    <ul class="nav__menu">
+      <li><a href="#solution">Solution</a></li>
+      <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+      <li><a href="#tarifs">Tarifs</a></li>
+      <li><a href="#temoignages">Clients</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <div class="nav__actions">
+      <a href="tel:+41000000000" class="nav__phone">
+        <i data-lucide="phone" style="width:16px;height:16px;"></i>
+        <span>+41 27 000 00 00</span>
+      </a>
+      <a href="#contact" class="btn btn--primary">
+        Demander une démo
+        <span class="btn__arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- =============== HERO =============== -->
+  <header class="hero">
+    <div class="container hero__grid">
+      <div class="hero__content">
+        <span class="eyebrow hero__eyebrow">Programme de fidélité digital</span>
+        <h1 class="hero__title">
+          Des cartes <span class="accent">digitales</span><br>
+          qui changent tout.
+        </h1>
+        <ul class="hero__bullets">
+          <li>
+            <span class="check"><i data-lucide="check" style="width:14px;height:14px;stroke-width:3;"></i></span>
+            <span>Fidélisez vos clients sans jamais imprimer une carte</span>
+          </li>
+          <li>
+            <span class="check"><i data-lucide="check" style="width:14px;height:14px;stroke-width:3;"></i></span>
+            <span>Offrez une expérience Apple Wallet &amp; Google Wallet native</span>
+          </li>
+          <li>
+            <span class="check"><i data-lucide="check" style="width:14px;height:14px;stroke-width:3;"></i></span>
+            <span>Démarquez-vous avec une solution premium sans app à télécharger</span>
+          </li>
+        </ul>
+        <div class="hero__ctas">
+          <a href="#contact" class="btn btn--primary btn--lg">
+            Je veux essayer
+            <span class="btn__arrow">→</span>
+          </a>
+          <a href="#how" class="btn btn--ghost btn--lg">
+            Voir la démo
+            <i data-lucide="play" style="width:14px;height:14px;"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero__phone">
+        <canvas id="phone-canvas" aria-label="iPhone 3D interactif — glissez pour le faire tourner"></canvas>
+
+        <div class="hero__notif" aria-hidden="true">
+          <div class="hero__notif__icon">
+            <i data-lucide="bell" style="width:18px;height:18px;"></i>
+          </div>
+          <div>
+            <div class="hero__notif__title">Notification push</div>
+            <div class="hero__notif__text">+50 points gagnés</div>
+          </div>
+        </div>
+
+        <div class="hero__badge" aria-hidden="true">
+          <div class="hero__badge__label">Solde fidélité</div>
+          <div class="hero__badge__value">1 240 <span class="unit">pts</span></div>
+        </div>
+
+        <div class="hero__hint">
+          <i data-lucide="move" style="width:12px;height:12px;"></i>
+          Glissez pour faire tourner
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- =============== LOGOS CLIENTS =============== -->
+  <section class="logos">
+    <p class="logos__label"><strong>+200 commerces</strong> suisses nous font déjà confiance</p>
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span class="marquee__item">Café des Alpes</span>
+        <span class="marquee__item">Boutique Lumière</span>
+        <span class="marquee__item">Le Valaisan</span>
+        <span class="marquee__item">Studio Vert</span>
+        <span class="marquee__item">Maison Sion</span>
+        <span class="marquee__item">Pizzeria Rossi</span>
+        <span class="marquee__item">Bar à Vin 1815</span>
+        <span class="marquee__item">Le Cervin Café</span>
+        <span class="marquee__item">Atelier du Rhône</span>
+        <span class="marquee__item">Chez Mathilde</span>
+        <span class="marquee__item">Fitness Plus</span>
+        <span class="marquee__item">Coiffure Luna</span>
+        <!-- duplicate for seamless loop -->
+        <span class="marquee__item">Café des Alpes</span>
+        <span class="marquee__item">Boutique Lumière</span>
+        <span class="marquee__item">Le Valaisan</span>
+        <span class="marquee__item">Studio Vert</span>
+        <span class="marquee__item">Maison Sion</span>
+        <span class="marquee__item">Pizzeria Rossi</span>
+        <span class="marquee__item">Bar à Vin 1815</span>
+        <span class="marquee__item">Le Cervin Café</span>
+        <span class="marquee__item">Atelier du Rhône</span>
+        <span class="marquee__item">Chez Mathilde</span>
+        <span class="marquee__item">Fitness Plus</span>
+        <span class="marquee__item">Coiffure Luna</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FEATURES =============== -->
+  <section class="section section--cream" id="fonctionnalites">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">Fonctionnalités</span>
+        <h2 class="section__title">Tout ce qu'il faut pour <span style="color:var(--orange)">fidéliser vraiment</span></h2>
+        <p class="section__subtitle">Une plateforme complète pour lancer, piloter et développer votre programme de fidélité — sans développeur, sans friction.</p>
+      </div>
+
+      <div class="features">
+        <div class="feature reveal-js">
+          <div class="feature__icon"><i data-lucide="wallet" style="width:28px;height:28px;"></i></div>
+          <h3 class="feature__title">Apple &amp; Google Wallet</h3>
+          <p class="feature__text">Votre carte de fidélité directement dans le portefeuille natif du smartphone. Zéro app à télécharger.</p>
+        </div>
+
+        <div class="feature reveal-js">
+          <div class="feature__icon"><i data-lucide="users" style="width:28px;height:28px;"></i></div>
+          <h3 class="feature__title">Base de données centralisée</h3>
+          <p class="feature__text">Accédez en temps réel à la liste de vos clients fidèles, leurs habitudes et leur historique d'achats.</p>
+        </div>
+
+        <div class="feature reveal-js">
+          <div class="feature__icon"><i data-lucide="bell-ring" style="width:28px;height:28px;"></i></div>
+          <h3 class="feature__title">Notifications push</h3>
+          <p class="feature__text">Envoyez des offres ciblées directement sur l'écran verrouillé. Taux d'ouverture jusqu'à 85%.</p>
+        </div>
+
+        <div class="feature reveal-js">
+          <div class="feature__icon"><i data-lucide="qr-code" style="width:28px;height:28px;"></i></div>
+          <h3 class="feature__title">QR code &amp; scan caisse</h3>
+          <p class="feature__text">Vos clients scannent, vous créditez. Compatible avec tous les logiciels de caisse et canaux de vente.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== BENEFITS (interactive) =============== -->
+  <section class="section section--white" id="solution">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">La solution Namqa</span>
+        <h2 class="section__title">Pensée pour le <span style="color:var(--orange)">commerce moderne</span></h2>
+        <p class="section__subtitle">Choisissez l'étape qui vous intéresse pour découvrir comment Namqa transforme votre relation client.</p>
+      </div>
+
+      <div class="benefits">
+        <div class="benefits__sticky">
+          <div class="benefits__visual">
+            <!-- Illustrated panels that change based on active benefit -->
+            <svg class="b-illus active" data-panel="0" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="cardGrad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0%" stop-color="#FF6B3D"/>
+                  <stop offset="100%" stop-color="#E85420"/>
+                </linearGradient>
+              </defs>
+              <rect x="80" y="110" width="240" height="150" rx="18" fill="url(#cardGrad)" />
+              <text x="100" y="150" fill="white" font-family="Space Grotesk" font-weight="700" font-size="14" letter-spacing="2">NAMQA CARD</text>
+              <text x="100" y="210" fill="white" font-family="Space Grotesk" font-weight="700" font-size="28">1 240 pts</text>
+              <circle cx="280" cy="150" r="18" fill="white" opacity="0.3"/>
+              <circle cx="300" cy="150" r="18" fill="white" opacity="0.3"/>
+              <text x="100" y="240" fill="white" font-family="Inter" font-size="12" opacity="0.8">Ambassadeur · Niveau Gold</text>
+              <!-- sparkles -->
+              <g fill="white" opacity="0.9">
+                <circle cx="60" cy="80" r="3"/><circle cx="340" cy="90" r="2"/><circle cx="50" cy="300" r="2"/><circle cx="350" cy="310" r="3"/>
+              </g>
+            </svg>
+
+            <svg class="b-illus" data-panel="1" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <rect x="60" y="80" width="280" height="240" rx="20" fill="white" opacity="0.95"/>
+              <rect x="80" y="110" width="120" height="12" rx="6" fill="#2E2B7A"/>
+              <rect x="80" y="134" width="200" height="8" rx="4" fill="#E8E6F5"/>
+              <rect x="80" y="150" width="160" height="8" rx="4" fill="#E8E6F5"/>
+              <!-- chart -->
+              <polyline points="80,260 120,230 160,240 200,200 240,210 280,170 320,180" fill="none" stroke="#FF6B3D" stroke-width="3" stroke-linecap="round"/>
+              <circle cx="280" cy="170" r="6" fill="#FF6B3D"/>
+              <rect x="80" y="280" width="240" height="8" rx="4" fill="#E8E6F5"/>
+              <rect x="80" y="295" width="180" height="8" rx="4" fill="#E8E6F5"/>
+            </svg>
+
+            <svg class="b-illus" data-panel="2" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- phone with notification -->
+              <rect x="140" y="60" width="120" height="240" rx="20" fill="#14123E" stroke="white" stroke-width="3"/>
+              <rect x="150" y="90" width="100" height="40" rx="8" fill="#FF6B3D"/>
+              <text x="160" y="108" fill="white" font-size="10" font-family="Inter" font-weight="600">NAMQA</text>
+              <text x="160" y="122" fill="white" font-size="9" font-family="Inter">Nouvelle offre !</text>
+              <rect x="150" y="140" width="100" height="30" rx="8" fill="white" opacity="0.1"/>
+              <rect x="150" y="175" width="100" height="30" rx="8" fill="white" opacity="0.1"/>
+              <!-- bell floating -->
+              <circle cx="80" cy="100" r="28" fill="#FF6B3D"/>
+              <text x="80" y="110" text-anchor="middle" fill="white" font-size="28">🔔</text>
+            </svg>
+
+            <svg class="b-illus" data-panel="3" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+              <!-- multi-location map pins -->
+              <rect x="40" y="40" width="320" height="320" rx="20" fill="white" opacity="0.08"/>
+              <circle cx="120" cy="140" r="12" fill="#FF6B3D"/>
+              <path d="M120 140 L120 170" stroke="#FF6B3D" stroke-width="3"/>
+              <circle cx="260" cy="180" r="12" fill="#FF6B3D"/>
+              <path d="M260 180 L260 210" stroke="#FF6B3D" stroke-width="3"/>
+              <circle cx="180" cy="270" r="12" fill="#FF6B3D"/>
+              <path d="M180 270 L180 300" stroke="#FF6B3D" stroke-width="3"/>
+              <circle cx="300" cy="280" r="12" fill="#FF6B3D"/>
+              <path d="M300 280 L300 310" stroke="#FF6B3D" stroke-width="3"/>
+              <!-- connecting dashes -->
+              <path d="M120 140 Q 190 100 260 180 Q 220 230 180 270 Q 240 290 300 280" fill="none" stroke="white" stroke-width="1.5" stroke-dasharray="4 6" opacity="0.5"/>
+            </svg>
+          </div>
+        </div>
+
+        <div class="benefits__list">
+          <div class="benefit active" data-benefit="0">
+            <div class="benefit__number">01</div>
+            <h3 class="benefit__title">Récompensez vos clients fidèles</h3>
+            <p class="benefit__text">Vos clients cumulent des points à chaque passage. Paliers, récompenses personnalisées, cashback : vous créez la mécanique qui fonctionne pour votre commerce. Plus ludique qu'une carte à tampons, infiniment plus efficace.</p>
+          </div>
+          <div class="benefit" data-benefit="1">
+            <div class="benefit__number">02</div>
+            <h3 class="benefit__title">Pilotez vos données en temps réel</h3>
+            <p class="benefit__text">Tableau de bord clair : fréquence de visite, panier moyen, produits préférés, clients VIP. Prenez des décisions basées sur la réalité, pas sur l'intuition.</p>
+          </div>
+          <div class="benefit" data-benefit="2">
+            <div class="benefit__number">03</div>
+            <h3 class="benefit__title">Réactivez avec la notification push</h3>
+            <p class="benefit__text">Un client n'est pas revenu depuis 30 jours ? Envoyez-lui une offre automatique directement sur son écran verrouillé. Taux d'ouverture 10× supérieur à l'email.</p>
+          </div>
+          <div class="benefit" data-benefit="3">
+            <div class="benefit__number">04</div>
+            <h3 class="benefit__title">Fidélité multi-points de vente</h3>
+            <p class="benefit__text">Plusieurs boutiques ou établissements ? Vos clients cumulent partout, vous pilotez chaque point de vente indépendamment. Un vrai réseau, une seule carte.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== PRICING =============== -->
+  <section class="section section--cream" id="tarifs">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">Tarifs transparents</span>
+        <h2 class="section__title">Un prix <span style="color:var(--orange)">à votre budget</span></h2>
+        <p class="section__subtitle">Pas de frais cachés, pas d'engagement long. Vous payez en fonction de vos besoins — et on s'occupe de tout, du design à l'intégration.</p>
+      </div>
+
+      <div class="pricing">
+        <div class="price-card reveal-js">
+          <div class="price-card__name">Essentiel</div>
+          <div class="price-card__subtitle">Lancez votre carte de fidélité digitale en quelques jours</div>
+          <div class="price-card__price">
+            <span style="font-size:22px;color:var(--orange);margin-right:4px;">dès</span>
+            <span class="price-card__amount">49</span>
+            <span class="price-card__period">CHF / mois</span>
+          </div>
+          <ul class="price-card__features">
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Carte digitale Apple/Google Wallet</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Jusqu'à 500 clients</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Système de points simple</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Support par email</li>
+          </ul>
+          <a href="#contact" class="btn btn--white" style="border:1.5px solid var(--violet-soft);">Nous contacter <span class="btn__arrow">→</span></a>
+        </div>
+
+        <div class="price-card price-card--featured reveal-js">
+          <span class="price-card__tag">Le + populaire</span>
+          <div class="price-card__name">Premium</div>
+          <div class="price-card__subtitle">Notre solution complète pour les commerces ambitieux</div>
+          <div class="price-card__price">
+            <span class="price-card__amount">89</span>
+            <span class="price-card__period">CHF / mois</span>
+          </div>
+          <ul class="price-card__features">
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Tout Essentiel, sans limite de clients</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Notifications push illimitées</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Cashback &amp; récompenses avancées</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Tableau de bord analytics complet</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Support prioritaire</li>
+          </ul>
+          <a href="#contact" class="btn btn--primary">En savoir plus <span class="btn__arrow">→</span></a>
+        </div>
+
+        <div class="price-card reveal-js">
+          <div class="price-card__name">Enterprise</div>
+          <div class="price-card__subtitle">Pour les réseaux multi-enseignes et franchises</div>
+          <div class="price-card__price">
+            <span class="price-card__amount">149</span>
+            <span class="price-card__period">CHF / mois</span>
+          </div>
+          <ul class="price-card__features">
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Tout Premium inclus</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Multi-points de vente illimités</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Intégrations API sur mesure</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>White-label disponible</li>
+            <li><span class="check"><i data-lucide="check" style="width:12px;height:12px;stroke-width:3;"></i></span>Account manager dédié</li>
+          </ul>
+          <a href="#contact" class="btn btn--white" style="border:1.5px solid var(--violet-soft);">En savoir plus <span class="btn__arrow">→</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== HOW IT WORKS =============== -->
+  <section class="section section--white" id="how">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">Comment ça marche</span>
+        <h2 class="section__title">Opérationnel en <span style="color:var(--orange)">5 minutes</span></h2>
+        <p class="section__subtitle">Pas de développeur, pas de prise de tête. On vous accompagne du setup au premier client fidélisé.</p>
+      </div>
+
+      <div class="steps">
+        <div class="step reveal-js">
+          <div class="step__num">01</div>
+          <h3 class="step__title">Paramétrez votre carte</h3>
+          <p class="step__text">Choisissez vos couleurs, vos récompenses et votre mécanique de points. On s'occupe du reste, du design Wallet à l'intégration.</p>
+        </div>
+        <div class="step reveal-js">
+          <div class="step__num">02</div>
+          <h3 class="step__title">Proposez-la à vos clients</h3>
+          <p class="step__text">Un QR code à l'accueil, un lien sur votre site ou un SMS : vos clients ajoutent leur carte à leur Wallet en 3 secondes, sans app.</p>
+        </div>
+        <div class="step reveal-js">
+          <div class="step__num">03</div>
+          <h3 class="step__title">Récompensez à chaque visite</h3>
+          <p class="step__text">Scan du QR, points crédités automatiquement, notification envoyée. Vos clients reviennent. Vos chiffres montent.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== CTA BANNER =============== -->
+  <section class="cta-banner reveal-js" style="background: linear-gradient(135deg, var(--violet-deeper) 0%, var(--violet) 50%, var(--orange-dark) 150%);">
+    <h2>Offrez à vos clients une expérience <span style="color:var(--orange)">digne de 2026</span></h2>
+    <a href="#contact" class="btn btn--primary btn--lg">Essayer Namqa <span class="btn__arrow">→</span></a>
+  </section>
+
+  <!-- =============== TESTIMONIALS =============== -->
+  <section class="section section--cream" id="temoignages">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">Ils nous font confiance</span>
+        <h2 class="section__title">Des commerces qui <span style="color:var(--orange)">cartonnent</span></h2>
+        <p class="section__subtitle">Ils ont troqué leurs cartes papier contre Namqa. Voici leur retour.</p>
+      </div>
+
+      <div class="testimonials">
+        <div class="testimonials__track" id="testimonials-track">
+          <article class="testimonial">
+            <p class="testimonial__quote">On a abandonné les cartes à tampons du jour au lendemain. Résultat : +32% de clients réguliers en 4 mois. La notification push, c'est magique.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">CA</div>
+              <div>
+                <div class="testimonial__brand">Café des Alpes</div>
+                <div class="testimonial__role">Chloé, gérante</div>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p class="testimonial__quote">L'installation a pris 10 minutes. Mes clients adorent avoir leur carte directement dans le Wallet. Zéro friction, c'est exactement ce que je cherchais.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">PR</div>
+              <div>
+                <div class="testimonial__brand">Pizzeria Rossi</div>
+                <div class="testimonial__role">Marco, fondateur</div>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p class="testimonial__quote">Le tableau de bord nous a ouvert les yeux sur qui sont vraiment nos clients fidèles. On a pu lancer des campagnes ciblées qui ont triplé notre ROI.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">BL</div>
+              <div>
+                <div class="testimonial__brand">Boutique Lumière</div>
+                <div class="testimonial__role">Sophie, co-fondatrice</div>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p class="testimonial__quote">En tant que réseau de 7 salons, Namqa nous permet de piloter chaque établissement tout en offrant une expérience unifiée à nos clients. Un vrai bijou.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">CL</div>
+              <div>
+                <div class="testimonial__brand">Coiffure Luna</div>
+                <div class="testimonial__role">Nathan, directeur</div>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p class="testimonial__quote">On avait peur que nos clients âgés ne s'adaptent pas. Finalement, tout le monde trouve ça simple. Même ma maman de 72 ans utilise sa carte Namqa.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">MS</div>
+              <div>
+                <div class="testimonial__brand">Maison Sion</div>
+                <div class="testimonial__role">Thomas, gérant</div>
+              </div>
+            </div>
+          </article>
+          <article class="testimonial">
+            <p class="testimonial__quote">Le support est dingue. Une question le dimanche soir, réponse dans l'heure. On sent qu'ils sont vraiment investis dans notre succès.</p>
+            <div class="testimonial__author">
+              <div class="testimonial__avatar">FP</div>
+              <div>
+                <div class="testimonial__brand">Fitness Plus</div>
+                <div class="testimonial__role">Laura, manager</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="testimonials__controls">
+          <button class="carousel-btn" data-dir="-1" aria-label="Témoignage précédent">
+            <i data-lucide="arrow-left" style="width:18px;height:18px;"></i>
+          </button>
+          <button class="carousel-btn" data-dir="1" aria-label="Témoignage suivant">
+            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== REVIEWS 5/5 =============== -->
+  <section class="section section--violet">
+    <div class="container">
+      <div class="reviews-hero reveal-js">
+        <div class="reviews-hero__rating">5,0</div>
+        <div class="reviews-hero__stars">★ ★ ★ ★ ★</div>
+        <div class="reviews-hero__label">Note moyenne — Avis clients Namqa</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FAQ =============== -->
+  <section class="section section--cream" id="faq">
+    <div class="container">
+      <div class="section__head reveal-js">
+        <span class="eyebrow">Questions fréquentes</span>
+        <h2 class="section__title">Tout ce que <span style="color:var(--orange)">vous vous demandez</span></h2>
+        <p class="section__subtitle">Pas trouvé la réponse ? <a href="#contact" style="color:var(--orange);font-weight:600;">Contactez-nous</a> — on répond en moins de 2h.</p>
+      </div>
+
+      <div class="faq">
+        <details class="faq-item">
+          <summary>
+            Mes clients doivent-ils télécharger une application ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Non, et c'est tout l'intérêt. La carte Namqa s'ajoute directement dans Apple Wallet ou Google Wallet, l'application native déjà présente sur chaque smartphone. En 3 secondes, votre client a sa carte de fidélité sans rien installer.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Combien de temps pour lancer mon programme ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            5 minutes pour paramétrer votre carte, quelques heures pour valider le design avec notre équipe, et vous êtes en ligne. Certains commerces démarrent leur fidélisation dans la journée même où ils souscrivent.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Comment mes clients ajoutent leur carte ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Trois façons : un QR code à votre comptoir, un lien sur votre site web ou réseaux sociaux, ou un SMS envoyé depuis votre tableau de bord. Un tap et leur carte est dans le Wallet.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Puis-je envoyer des messages à mes clients ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Oui. Depuis votre tableau de bord, vous envoyez des notifications push directement sur l'écran verrouillé de vos clients. Promotions, événements, rappels — avec un taux d'ouverture autour de 85%, soit 10× plus que l'email.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Namqa s'intègre-t-il à ma caisse ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            La solution fonctionne de manière autonome via scan QR. Pour les formules Premium et Enterprise, nous proposons des intégrations API avec les principaux logiciels de caisse du marché suisse (Lightspeed, Gastrofix, SumUp, etc.).
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Est-ce conforme au RGPD et à la LPD suisse ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Totalement. Les données de vos clients sont hébergées en Suisse, chiffrées, et vous restez maître de leur usage. Nous fournissons les modèles de consentement et les exports nécessaires en cas de demande client.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Puis-je avoir plusieurs points de vente ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Oui, dès la formule Enterprise. Vos clients cumulent leurs points dans tous vos établissements avec la même carte. Vous pilotez chaque point de vente indépendamment tout en gardant une vue d'ensemble.
+          </div>
+        </details>
+        <details class="faq-item">
+          <summary>
+            Y a-t-il un engagement ?
+            <span class="faq-item__icon"><i data-lucide="plus" style="width:16px;height:16px;"></i></span>
+          </summary>
+          <div class="faq-item__content">
+            Non. Toutes nos formules sont sans engagement, résiliables à tout moment. On préfère vous garder parce qu'on vous apporte de la valeur — pas parce que vous êtes coincé dans un contrat.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- =============== FINAL CTA =============== -->
+  <section class="final-cta reveal-js" id="contact">
+    <h2>L'avenir appartient à ceux qui <span style="color:var(--orange)">digitalisent leur fidélité</span>.</h2>
+    <a href="mailto:contact@namqa.studio" class="btn btn--primary btn--lg">Obtenir une démo personnalisée <span class="btn__arrow">→</span></a>
+    <p style="margin-top:24px;color:rgba(255,255,255,0.6);font-size:14px;">Sans engagement · Réponse sous 2h · Démo 100% sur-mesure</p>
+  </section>
+
+  <!-- =============== FOOTER =============== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <div class="footer__brand">
+          <img src="assets/images/namqa-logo-white.png" alt="Namqa Studio" style="height:42px;" />
+          <p>La fidélité digitale pensée pour les commerces suisses. Simple, moderne, efficace.</p>
+        </div>
+        <div class="footer__col">
+          <h4>Solution</h4>
+          <ul>
+            <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+            <li><a href="#tarifs">Tarifs</a></li>
+            <li><a href="#how">Comment ça marche</a></li>
+            <li><a href="#faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Secteurs</h4>
+          <ul>
+            <li><a href="#">Restaurants &amp; cafés</a></li>
+            <li><a href="#">Boutiques</a></li>
+            <li><a href="#">Salons &amp; instituts</a></li>
+            <li><a href="#">Fitness &amp; bien-être</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Entreprise</h4>
+          <ul>
+            <li><a href="#">À propos</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Partenaires</a></li>
+            <li><a href="#">Carrières</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4>Contact</h4>
+          <ul>
+            <li><a href="mailto:contact@namqa.studio">contact@namqa.studio</a></li>
+            <li><a href="tel:+41270000000">+41 27 000 00 00</a></li>
+            <li><a href="#">Sion, Valais · CH</a></li>
+            <li><a href="#contact">Demander une démo</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <div>© 2026 Namqa Studio. Tous droits réservés.</div>
+        <div class="footer__legal">
+          <a href="#">Mentions légales</a>
+          <a href="#">CGU</a>
+          <a href="#">Cookies</a>
+          <a href="#">Confidentialité</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/main.js" defer></script>
+  <script type="module" src="assets/js/phone3d.js"></script>
+</body>
+</html>
