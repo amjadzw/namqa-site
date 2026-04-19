@@ -1,21 +1,21 @@
 {
-  "eyebrow": "Programme de fidélité digital",
-  "title_before": "Des cartes",
-  "title_accent": "digitales",
-  "title_after": "qui changent tout.",
-  "bullets": [
-    "Fidélisez vos clients sans jamais imprimer une carte",
-    "Offrez une expérience Apple Wallet & Google Wallet native",
-    "Démarquez-vous avec une solution premium sans app à télécharger"
-  ],
-  "cta_primary_label": "Je veux essayer",
-  "cta_primary_href": "#contact",
-  "cta_secondary_label": "Voir la démo",
-  "cta_secondary_href": "#how",
-  "notif_title": "NAMQA",
-  "notif_text": "–30% sur notre assortiment !",
-  "badge_label": "Solde fidélité",
-  "badge_value": "1 240",
   "badge_unit": "pts",
-  "hint_text": "Glissez pour faire tourner"
+  "cta_secondary_href": "#how",
+  "hint_text": "Glissez pour faire tourner",
+  "title_before": "Des cartes",
+  "cta_primary_label": "Je veux essayer",
+  "notif_title": "NAMQA",
+  "eyebrow": "Programme de fidélité digital",
+  "title_accent": "digitales",
+  "bullets": [
+    "Fidélisez vos clients sans jamais imprimer une carte, gravé sur leur mobile !",
+    "0 application ! Offrez une expérience Apple Wallet & Google Wallet native sur tout appareil ",
+    "Démarquez-vous avec une solution rapide et premium sans app à télécharger"
+  ],
+  "title_after": "qui changent tout.",
+  "badge_value": "1 240",
+  "cta_primary_href": "#contact",
+  "badge_label": "Solde fidélité",
+  "cta_secondary_label": "Voir la démo",
+  "notif_text": "–30% sur notre assortiment !"
 }
