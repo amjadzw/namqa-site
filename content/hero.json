@@ -9,13 +9,13 @@
   "title_accent": "digitales",
   "bullets": [
     "Fidélisez vos clients sans jamais imprimer une carte, gravé sur leur mobile !",
-    "0 application ! Offrez une expérience Apple Wallet & Google Wallet native sur tout appareil ",
-    "Démarquez-vous avec une solution rapide et premium sans app à télécharger"
+    "Notifiez vos clients avec des message customisé, promos ou récompenses — directement en push !",
+    "Vos clients scannent, collectent et reviennent — sans jamais installer une app."
   ],
   "title_after": "qui changent tout.",
-  "badge_value": "1 240",
+  "badge_value": "1200",
   "cta_primary_href": "#contact",
   "badge_label": "Solde fidélité",
   "cta_secondary_label": "Voir la démo",
-  "notif_text": "–30% sur notre assortiment !"
+  "notif_text": "Nouveauté en stock ! ..."
 }
