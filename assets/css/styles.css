@@ -1,22 +1,26 @@
 /* ======================================================
    NAMQA STUDIO — Programme de fidélité
-   DA: Violet deep + Orange vif + Crème
+   DA: Indigo monochromatique + Blanc cassé — Swiss premium
    ====================================================== */
 
 :root {
-  /* Colors */
-  --violet: #2E2B7A;
-  --violet-dark: #1F1D5E;
-  --violet-deeper: #14123E;
-  --violet-light: #6561D6;
-  --violet-soft: #E8E6F5;
-  --orange: #FF6B3D;
-  --orange-dark: #E85420;
-  --orange-soft: #FFE4D9;
-  --cream: #FAF7F2;
-  --cream-dark: #F2EDE4;
-  --ink: #14123E;
-  --ink-soft: #4A4870;
+  /* Colors — Indigo monochromatic palette */
+  --violet: #2E2E80;           /* primary indigo (brand) */
+  --violet-dark: #1F1F5E;      /* darker indigo */
+  --violet-deeper: #121240;    /* deepest indigo (hero, footer) */
+  --violet-light: #6A6AD1;     /* light indigo */
+  --violet-soft: #E6E6F2;      /* very soft indigo tint */
+
+  /* Accent = bright indigo (replaces former orange) */
+  --orange: #4F4FC9;           /* accent highlight */
+  --orange-dark: #3838A8;      /* accent hover */
+  --orange-soft: #DCDCF5;      /* accent bg tint */
+
+  /* Neutrals */
+  --cream: #FEFDF7;            /* off-white */
+  --cream-dark: #F7F5EC;       /* slightly darker off-white */
+  --ink: #121240;              /* primary text */
+  --ink-soft: #4A4A7A;         /* secondary text */
   --white: #FFFFFF;
 
   /* Typography */
@@ -36,10 +40,10 @@
   --transition: 180ms var(--ease-out);
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(31, 29, 94, 0.08);
-  --shadow-md: 0 8px 32px rgba(31, 29, 94, 0.12);
-  --shadow-lg: 0 20px 60px rgba(31, 29, 94, 0.18);
-  --shadow-orange: 0 12px 40px rgba(255, 107, 61, 0.35);
+  --shadow-sm: 0 2px 8px rgba(31, 31, 94, 0.08);
+  --shadow-md: 0 8px 32px rgba(31, 31, 94, 0.12);
+  --shadow-lg: 0 20px 60px rgba(31, 31, 94, 0.18);
+  --shadow-orange: 0 12px 40px rgba(79, 79, 201, 0.35);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -742,6 +746,22 @@ section { position: relative; }
 
 .price-card--featured .price-card__period { color: rgba(255, 255, 255, 0.7); }
 
+.price-card__price--custom {
+  display: flex;
+  align-items: baseline;
+  margin-bottom: 24px;
+  padding: 4px 0;
+}
+.price-card__custom {
+  font-family: var(--font-display);
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--violet);
+}
+.price-card--featured .price-card__custom { color: var(--white); }
+
 .price-card__features {
   list-style: none;
   display: flex;
@@ -830,7 +850,7 @@ section { position: relative; }
 .step__num {
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, var(--orange) 0%, #FF8C66 100%);
+  background: linear-gradient(135deg, var(--orange) 0%, #7878DE 100%);
   color: white;
   font-family: var(--font-display);
   font-size: 28px;
@@ -977,7 +997,7 @@ section { position: relative; }
   font-size: 96px;
   font-weight: 700;
   line-height: 1;
-  background: linear-gradient(135deg, var(--orange) 0%, #FFB894 100%);
+  background: linear-gradient(135deg, var(--orange) 0%, #9292E8 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -1206,4 +1226,73 @@ section { position: relative; }
     transition-duration: 0.01ms !important;
   }
   .marquee__track { animation: none; }
+}
+
+/* ======================================================
+   SOLUTIONS COMPLÉMENTAIRES
+   ====================================================== */
+.solutions {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+
+.solution-card {
+  background: var(--white);
+  border-radius: var(--radius-md);
+  padding: 32px 24px 28px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border: 1.5px solid var(--violet-soft);
+  transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+}
+
+.solution-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--violet-light);
+}
+
+.solution-card__title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.15;
+  color: var(--ink);
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.solution-card__illus {
+  width: 100%;
+  max-width: 220px;
+  margin: 4px auto 20px;
+}
+.solution-card__illus svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.solution-card__text {
+  font-size: 15px;
+  color: var(--ink-soft);
+  line-height: 1.5;
+}
+
+@media (max-width: 980px) {
+  .solutions {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .solutions {
+    grid-template-columns: 1fr;
+  }
 }

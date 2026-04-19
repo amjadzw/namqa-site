@@ -360,9 +360,9 @@ function createWalletCardTexture() {
 
   // Card gradient (Namqa violet)
   const cardGrad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
-  cardGrad.addColorStop(0, '#3f3ba0');
-  cardGrad.addColorStop(0.5, '#2E2B7A');
-  cardGrad.addColorStop(1, '#1F1D5E');
+  cardGrad.addColorStop(0, '#4F4FC9');
+  cardGrad.addColorStop(0.5, '#2E2E80');
+  cardGrad.addColorStop(1, '#1F1F5E');
   roundRect(ctx, cardX, cardY, cardW, cardH, radius, cardGrad);
 
   // subtle sheen
@@ -394,7 +394,7 @@ function createWalletCardTexture() {
   ctx.fillText('Amjad Mohamed', cardX + 32, cardY + 172);
 
   // Points balance — big orange
-  ctx.fillStyle = '#FF6B3D';
+  ctx.fillStyle = '#6A6AD1';
   ctx.font = '800 56px -apple-system, "Space Grotesk", sans-serif';
   ctx.fillText('1 240', cardX + 32, cardY + 250);
 
@@ -412,7 +412,7 @@ function createWalletCardTexture() {
   roundRect(ctx, cardX, barcodeY, cardW, 130, 20, '#ffffff');
 
   // Barcode pattern
-  ctx.fillStyle = '#14123E';
+  ctx.fillStyle = '#121240';
   const bStartX = cardX + 40;
   const bW = cardW - 80;
   const lines = 52;
@@ -424,7 +424,7 @@ function createWalletCardTexture() {
   }
 
   // Barcode number
-  ctx.fillStyle = '#14123E';
+  ctx.fillStyle = '#121240';
   ctx.font = '600 14px -apple-system, Inter, sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('4 2 7 8 8 9 1 2 0 2 4 8', cardX + cardW / 2, barcodeY + 108);
@@ -432,10 +432,10 @@ function createWalletCardTexture() {
 
   // === Secondary card preview (stacked behind) ===
   const card2Y = barcodeY + 170;
-  roundRect(ctx, cardX + 16, card2Y - 12, cardW - 32, 24, 12, '#FF6B3D');
+  roundRect(ctx, cardX + 16, card2Y - 12, cardW - 32, 24, 12, '#4F4FC9');
   const card2Grad = ctx.createLinearGradient(cardX, card2Y, cardX + cardW, card2Y + 180);
-  card2Grad.addColorStop(0, '#E85420');
-  card2Grad.addColorStop(1, '#FF6B3D');
+  card2Grad.addColorStop(0, '#3838A8');
+  card2Grad.addColorStop(1, '#4F4FC9');
   roundRect(ctx, cardX, card2Y, cardW, 180, 22, card2Grad);
 
   ctx.fillStyle = '#ffffff';
@@ -454,7 +454,7 @@ function createWalletCardTexture() {
     if (i < 8) {
       ctx.fillStyle = '#ffffff';
       ctx.fill();
-      ctx.fillStyle = '#FF6B3D';
+      ctx.fillStyle = '#6A6AD1';
       ctx.font = '800 16px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('★', sx + 14, sy + 20);

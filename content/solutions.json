@@ -1,0 +1,28 @@
+{
+  "eyebrow": "Au-delà de la fidélité",
+  "title_before": "Nos solutions complémentaires aux",
+  "title_accent": "campagnes marketing",
+  "subtitle": "Pour exploiter tout le potentiel des campagnes marketing, appuyez-vous sur nos solutions digitales complémentaires et créez une expérience client vraiment unique.",
+  "items": [
+    {
+      "illustration": "loyalty",
+      "title": "Programme de fidélité",
+      "text": "Faites revenir vos clients sans effort."
+    },
+    {
+      "illustration": "prepaid",
+      "title": "Cartes prépayées / Cashless",
+      "text": "Proposez un moyen de paiement original."
+    },
+    {
+      "illustration": "reviews",
+      "title": "Avis client",
+      "text": "Boostez votre réputation en ligne."
+    },
+    {
+      "illustration": "database",
+      "title": "Base de données clients",
+      "text": "Devenez maître de vos données."
+    }
+  ]
+}

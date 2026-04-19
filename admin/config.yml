@@ -200,6 +200,35 @@ collections:
               - { label: "Rôle / Personne", name: "role", widget: "string" }
               - { label: "Initiales (2 lettres)", name: "initials", widget: "string", pattern: ['^.{1,3}$', 'Max 3 caractères'] }
 
+  # ---------- SOLUTIONS COMPLÉMENTAIRES ----------
+  - name: "solutions"
+    label: "✨ Solutions complémentaires"
+    files:
+      - name: "solutions"
+        label: "Section Solutions complémentaires"
+        file: "content/solutions.json"
+        format: "json"
+        fields:
+          - { label: "Surtitre", name: "eyebrow", widget: "string" }
+          - { label: "Titre — avant l'accent", name: "title_before", widget: "string" }
+          - { label: "Titre — accent (orange)", name: "title_accent", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - label: "Solutions (4 cartes)"
+            name: "items"
+            widget: "list"
+            max: 4
+            fields:
+              - label: "Illustration"
+                name: "illustration"
+                widget: "select"
+                options:
+                  - { label: "Tasse + carte fidélité", value: "loyalty" }
+                  - { label: "Cloche + carte cashless", value: "prepaid" }
+                  - { label: "Téléphone avec avis", value: "reviews" }
+                  - { label: "Ordinateur + dashboard", value: "database" }
+              - { label: "Titre", name: "title", widget: "string" }
+              - { label: "Texte court", name: "text", widget: "text" }
+
   # ---------- FAQ ----------
   - name: "faq"
     label: "❓ FAQ"

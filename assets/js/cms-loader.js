@@ -195,16 +195,23 @@
           : "";
         const ctaClass = p.featured ? "btn btn--primary" : "btn btn--white";
         const ctaStyle = p.featured ? "" : ' style="border:1.5px solid var(--violet-soft);"';
+        // Detect custom-quote pricing (non-numeric amount)
+        const isCustomPrice = p.amount && !/\d/.test(String(p.amount));
+        const priceBlock = isCustomPrice
+          ? `<div class="price-card__price price-card__price--custom">
+               <span class="price-card__custom">${esc(p.amount)}</span>
+             </div>`
+          : `<div class="price-card__price">
+               ${prefix}
+               <span class="price-card__amount">${esc(p.amount)}</span>
+               <span class="price-card__period">${esc(p.period)}</span>
+             </div>`;
         return `
           <div class="${featClass}">
             ${tag}
             <div class="price-card__name">${esc(p.name)}</div>
             <div class="price-card__subtitle">${esc(p.subtitle)}</div>
-            <div class="price-card__price">
-              ${prefix}
-              <span class="price-card__amount">${esc(p.amount)}</span>
-              <span class="price-card__period">${esc(p.period)}</span>
-            </div>
+            ${priceBlock}
             <ul class="price-card__features">
               ${p.features.map(f => `<li>${checkIconSm}${esc(f)}</li>`).join("")}
             </ul>
@@ -271,13 +278,33 @@
         </article>
       `).join("");
     }
-    const rHero = q(".reviews-hero");
-    if (rHero) {
-      rHero.innerHTML = `
-        <div class="reviews-hero__rating">${esc(data.rating)}</div>
-        <div class="reviews-hero__stars">★ ★ ★ ★ ★</div>
-        <div class="reviews-hero__label">${esc(data.rating_label)}</div>
+    // (Reviews 5/5 block removed — replaced by Solutions section)
+  }
+
+  // ---------------- SOLUTIONS COMPLÉMENTAIRES ----------------
+  function renderSolutions(data) {
+    const head = q("#solutions .section__head");
+    if (head) {
+      head.innerHTML = `
+        <span class="eyebrow">${esc(data.eyebrow)}</span>
+        <h2 class="section__title">${esc(data.title_before)} <span style="color:var(--orange)">${esc(data.title_accent)}</span></h2>
+        <p class="section__subtitle">${esc(data.subtitle)}</p>
       `;
+      head.classList.add("reveal-js");
+    }
+    const wrap = q("#solutions .solutions");
+    if (wrap) {
+      const svgs = window.__NAMQA_SOLUTIONS_SVG__ || {};
+      wrap.innerHTML = data.items.map(item => {
+        const svg = svgs[item.illustration] || "";
+        return `
+          <div class="solution-card reveal-js">
+            <h3 class="solution-card__title">${esc(item.title)}</h3>
+            <div class="solution-card__illus">${svg}</div>
+            <p class="solution-card__text">${esc(item.text)}</p>
+          </div>
+        `;
+      }).join("");
     }
   }
 
@@ -351,7 +378,7 @@
   // ---------------- MAIN ----------------
   async function init() {
     try {
-      const [nav, hero, marquee, features, benefits, pricing, steps, testimonials, faq, finalCta, footer] = await Promise.all([
+      const [nav, hero, marquee, features, benefits, pricing, steps, testimonials, solutions, faq, finalCta, footer] = await Promise.all([
         loadJSON("content/nav.json"),
         loadJSON("content/hero.json"),
         loadJSON("content/marquee.json"),
@@ -360,6 +387,7 @@
         loadJSON("content/pricing.json"),
         loadJSON("content/steps.json"),
         loadJSON("content/testimonials.json"),
+        loadJSON("content/solutions.json"),
         loadJSON("content/faq.json"),
         loadJSON("content/final_cta.json"),
         loadJSON("content/footer.json"),
@@ -373,6 +401,7 @@
       renderPricing(pricing);
       renderSteps(steps);
       renderTestimonials(testimonials);
+      renderSolutions(solutions);
       renderFaq(faq);
       renderFinalCta(finalCta);
       renderFooter(footer);
