@@ -187,39 +187,44 @@ function initScene() {
   };
   window.addEventListener('resize', onResize);
 
-  // Animation loop
-  const IDLE_AFTER = 2000;
+  // Animation loop — rotation continue douce (style V1)
+  const IDLE_RESUME = 2500; // après lacher, temps avant reprise auto-rotation
   let last = performance.now();
   const start = performance.now();
-  const rotStart = 0.9, rotEnd = 0.12;
-  phone.rotation.y = rotStart;
-  const entryDur = 1200;
+  const entryDur = 1400;
   let autoShine = 0;
+  let autoRotOffset = 0; // angle courant de la rotation auto
 
   function animate(now) {
     requestAnimationFrame(animate);
     const dt = Math.min(0.05, (now - last) / 1000);
     last = now;
 
-    // Entrée
+    // Entrée (démarre à un angle plus prononcé, revient vers la rotation de croisière)
     const entry = Math.min(1, (now - start) / entryDur);
-    if (entry < 1 && !drag.active) {
-      const e = 1 - Math.pow(1 - entry, 3);
-      phone.rotation.y = rotStart + (rotEnd - rotStart) * e;
-      drag.idleAt = now;
+    const entryEase = 1 - Math.pow(1 - entry, 3);
+
+    // Rotation continue douce lorsqu'il n'y a pas de drag récent
+    const sinceDrag = now - drag.idleAt;
+    if (!drag.active && sinceDrag > IDLE_RESUME) {
+      autoRotOffset += dt * 0.35; // vitesse angulaire (rad/s)
+      const amp = 0.55;            // amplitude de l'oscillation Y
+      const targetY = Math.sin(autoRotOffset) * amp;
+      // easing lorsque l'entrée se termine
+      const startY = 0.9 * (1 - entryEase);
+      phone.rotation.y = startY + targetY * entryEase;
+      // léger tangage X
+      const targetX = 0.03 + Math.sin(autoRotOffset * 0.6) * 0.04;
+      phone.rotation.x += (targetX - phone.rotation.x) * 0.04;
+    } else if (!drag.active && sinceDrag <= IDLE_RESUME) {
+      // Transition douce : on se resynchronise sur l'angle courant
+      autoRotOffset = Math.asin(Math.max(-1, Math.min(1, phone.rotation.y / 0.55))) || 0;
     }
 
-    // Oscillation idle douce
-    if (!drag.active && (now - drag.idleAt) > IDLE_AFTER) {
-      const t = (now - drag.idleAt) / 1000;
-      phone.rotation.y = rotEnd + Math.sin(t * 0.45) * 0.08;
-      phone.rotation.x += (0.03 - phone.rotation.x) * 0.03;
-    }
-
-    // Bob vertical
+    // Bob vertical léger
     phone.position.y = Math.sin(now * 0.0008) * 0.05;
 
-    // Auto shine si pas de drag ni hover
+    // Auto shine
     autoShine += dt * 0.18;
     if (autoShine > 1.6) autoShine = -0.2;
     const shineVal = drag.active ? state.screen.shine : autoShine;

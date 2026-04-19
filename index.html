@@ -14,7 +14,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -58,6 +58,31 @@
         <canvas id="phone-canvas" aria-label="iPhone 3D interactif — glissez pour le faire tourner"></canvas>
 
         <div class="hero__notif" aria-hidden="true"><!-- injected --></div>
+
+        <!-- Annotation gauche : création rapide -->
+        <div class="hero__note hero__note--left" aria-hidden="true">
+          <span class="hero__note__text">
+            Création en moins de<br/>
+            <strong>20 secondes !</strong>
+            <em>+ sans app</em>
+          </span>
+          <svg class="hero__note__arrow hero__note__arrow--left" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 14 C 40 6, 70 10, 104 40 S 114 66, 108 72" />
+            <path d="M108 72 L 100 64 M108 72 L 116 60" />
+          </svg>
+        </div>
+
+        <!-- Annotation droite : scan = update -->
+        <div class="hero__note hero__note--right" aria-hidden="true">
+          <svg class="hero__note__arrow hero__note__arrow--right" viewBox="0 0 120 80" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M114 14 C 80 6, 50 10, 16 40 S 6 66, 12 72" />
+            <path d="M12 72 L 20 64 M12 72 L 4 60" />
+          </svg>
+          <span class="hero__note__text">
+            Vous scannez,<br/>
+            <strong>c'est update !</strong>
+          </span>
+        </div>
 
         <div class="hero__hint"><!-- injected --></div>
       </div>

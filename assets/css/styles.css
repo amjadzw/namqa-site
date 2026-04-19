@@ -349,10 +349,10 @@ h1, h2, h3, h4 {
 /* iOS-style push notification */
 .hero__notif {
   position: absolute;
-  top: 3%;
-  left: 50%;
-  --fl-tx: -50%;
-  transform: translateX(-50%);
+  top: 6%;
+  left: 2%;
+  --fl-tx: 0;
+  transform: translateX(0);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
@@ -425,6 +425,80 @@ h1, h2, h3, h4 {
   letter-spacing: -0.015em;
   color: var(--ink);
   line-height: 1.2;
+}
+
+/* ===== Annotations « scribble » style (flèches manuscrites) ===== */
+.hero__note {
+  position: absolute;
+  z-index: 4;
+  display: flex;
+  align-items: flex-start;
+  gap: 4px;
+  color: #FFD9B8;
+  font-family: 'Caveat', 'Kalam', 'Bradley Hand', cursive;
+  line-height: 1.1;
+  font-size: 22px;
+  pointer-events: none;
+  max-width: 210px;
+}
+.hero__note__text {
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+.hero__note__text strong {
+  display: inline-block;
+  color: #FFB156;
+  font-weight: 700;
+  font-size: 26px;
+  margin-top: 2px;
+}
+.hero__note__text em {
+  display: block;
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  margin-top: 4px;
+}
+.hero__note__arrow {
+  width: 96px;
+  height: 64px;
+  color: #FF8A5C;
+  filter: drop-shadow(0 2px 6px rgba(255, 107, 53, 0.35));
+  flex-shrink: 0;
+}
+
+/* Annotation gauche : haut-gauche du téléphone, pointe vers carte membre */
+.hero__note--left {
+  top: 34%;
+  left: -6%;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+}
+.hero__note--left .hero__note__arrow {
+  margin-left: 30px;
+  margin-top: -2px;
+}
+
+/* Annotation droite : milieu-droit, pointe vers code-barres */
+.hero__note--right {
+  top: 44%;
+  right: -8%;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+}
+.hero__note--right .hero__note__arrow {
+  margin-right: 30px;
+  margin-bottom: -2px;
+  order: 2;
+}
+.hero__note--right .hero__note__text { order: 1; margin-bottom: -4px; }
+
+@media (max-width: 900px) {
+  .hero__note { display: none; }
 }
 
 .hero__badge {
