@@ -456,7 +456,7 @@ h1, h2, h3, h4 {
 section { position: relative; }
 
 .section {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(56px, 7vw, 96px) 0;
 }
 
 .section--cream { background: var(--cream); }
@@ -466,7 +466,7 @@ section { position: relative; }
 .section__head {
   text-align: center;
   max-width: 720px;
-  margin: 0 auto 64px;
+  margin: 0 auto 44px;
 }
 
 .section__title {
@@ -1084,7 +1084,7 @@ section { position: relative; }
 /* ===== FINAL CTA ===== */
 .final-cta {
   margin: 0 16px;
-  padding: clamp(80px, 10vw, 140px) 24px;
+  padding: clamp(64px, 8vw, 110px) 24px;
   border-radius: var(--radius-lg);
   background: linear-gradient(135deg, var(--violet-deeper) 0%, var(--violet) 100%);
   color: var(--white);
@@ -1115,14 +1115,35 @@ section { position: relative; }
 
 /* ===== CONTACT SECTION ===== */
 .contact-section {
-  padding: clamp(80px, 10vw, 140px) 0;
+  padding: clamp(48px, 6vw, 80px) 16px;
   background: var(--cream);
+}
+.contact-section__inner {
+  position: relative;
+  margin: 0 auto;
+  max-width: 1240px;
+  padding: clamp(56px, 7vw, 110px) clamp(24px, 4vw, 72px);
+  border-radius: var(--radius-lg);
+  background: linear-gradient(135deg, var(--violet-deeper) 0%, var(--violet) 100%);
+  color: var(--white);
+  overflow: hidden;
+  isolation: isolate;
+}
+.contact-section__inner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 25% 35%, rgba(255, 107, 53, 0.28) 0%, transparent 55%),
+    radial-gradient(circle at 80% 70%, rgba(101, 97, 214, 0.35) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: -1;
 }
 
 .contact-grid {
   display: grid;
   grid-template-columns: 1fr 1.15fr;
-  gap: clamp(48px, 6vw, 96px);
+  gap: clamp(40px, 5vw, 80px);
   align-items: start;
 }
 
@@ -1132,20 +1153,20 @@ section { position: relative; }
   font-weight: 800;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  color: var(--ink);
+  color: var(--white);
   text-transform: uppercase;
-  margin-bottom: 24px;
+  margin-bottom: 20px;
   display: block;
 }
 .contact-intro__title span { display: block; }
 .contact-intro__title .contact-intro__soft {
-  color: var(--violet);
-  font-weight: 700;
+  color: var(--orange);
+  font-weight: 800;
   text-transform: uppercase;
 }
 .contact-intro__sub {
   font-size: 17px;
-  color: var(--ink-soft);
+  color: rgba(255, 255, 255, 0.78);
   line-height: 1.65;
   max-width: 440px;
 }
@@ -1154,8 +1175,8 @@ section { position: relative; }
   background: var(--white);
   border-radius: var(--radius-lg);
   padding: clamp(28px, 3.5vw, 44px);
-  box-shadow: var(--shadow-md);
-  border: 1px solid rgba(46, 46, 128, 0.06);
+  box-shadow: 0 30px 80px -30px rgba(0, 0, 0, 0.5), 0 10px 30px -10px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   display: flex;
   flex-direction: column;
   gap: 22px;

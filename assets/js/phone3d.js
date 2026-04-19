@@ -6,6 +6,16 @@
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
+// Preload the Fromi card image so the canvas texture can include it
+const fromiImg = new Image();
+let fromiImgLoaded = false;
+fromiImg.crossOrigin = 'anonymous';
+fromiImg.src = 'assets/images/carte-fromi.jpg';
+fromiImg.onload = () => { fromiImgLoaded = true; };
+
+// Shared flag so the scene knows whether to show the "stamped" state on hover
+const fromiState = { stamped: false, texture: null };
+
 const canvas = document.getElementById('phone-canvas');
 if (canvas) {
   initPhone();
@@ -87,11 +97,22 @@ function initPhone() {
   phone.add(back);
 
   // ===== Screen (front face) =====
-  const screenTex = createWalletCardTexture();
+  const screenTex = createWalletCardTexture(false);
+  fromiState.texture = screenTex;
   const screenMat = new THREE.MeshBasicMaterial({
     map: screenTex,
     toneMapped: false,
   });
+
+  // Re-draw the texture once the Fromi image is loaded, then again on hover changes
+  const refreshScreen = () => {
+    const c = screenTex.image;
+    drawWalletCardOnCanvas(c, fromiState.stamped);
+    screenTex.needsUpdate = true;
+  };
+  if (!fromiImgLoaded) {
+    fromiImg.addEventListener('load', refreshScreen, { once: true });
+  }
   const screenGeo = new THREE.PlaneGeometry(W - BEZEL * 2, H - BEZEL * 2);
   const screen = new THREE.Mesh(screenGeo, screenMat);
   screen.position.z = D / 2 + 0.001;
@@ -252,6 +273,16 @@ function initPhone() {
   canvas.addEventListener('pointercancel', onUp);
   canvas.addEventListener('pointerleave', () => { if (state.isDragging) onUp(); });
 
+  // Hover to "stamp" — turn grey coffee cups to black on the Fromi card
+  const setStamped = (on) => {
+    if (fromiState.stamped === on) return;
+    fromiState.stamped = on;
+    drawWalletCardOnCanvas(screenTex.image, on);
+    screenTex.needsUpdate = true;
+  };
+  canvas.addEventListener('pointerenter', () => setStamped(true));
+  canvas.addEventListener('pointerleave', () => setStamped(false));
+
   // Touch fallback (some older touch flows)
   canvas.addEventListener('touchmove', (e) => { if (state.isDragging) e.preventDefault(); }, { passive: false });
 
@@ -316,14 +347,24 @@ function initPhone() {
 /* ==========================================================
    Draw the Apple Wallet card texture on a canvas
    ========================================================== */
-function createWalletCardTexture() {
+function createWalletCardTexture(stamped) {
   const c = document.createElement('canvas');
   // Portrait texture, high res for crispness
   c.width = 540;
   c.height = 1100;
-  const ctx = c.getContext('2d');
+  drawWalletCardOnCanvas(c, stamped);
 
+  const texture = new THREE.CanvasTexture(c);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  texture.anisotropy = 8;
+  texture.needsUpdate = true;
+  return texture;
+}
+
+function drawWalletCardOnCanvas(c, stamped) {
+  const ctx = c.getContext('2d');
   const W = c.width, H = c.height;
+  ctx.clearRect(0, 0, W, H);
 
   // Wallet dark background
   const bgGrad = ctx.createLinearGradient(0, 0, 0, H);
@@ -430,51 +471,129 @@ function createWalletCardTexture() {
   ctx.fillText('4 2 7 8 8 9 1 2 0 2 4 8', cardX + cardW / 2, barcodeY + 108);
   ctx.textAlign = 'left';
 
-  // === Secondary card preview (stacked behind) ===
+  // === Secondary card — Fromi real photo loyalty card ===
   const card2Y = barcodeY + 170;
-  roundRect(ctx, cardX + 16, card2Y - 12, cardW - 32, 24, 12, '#FF6B35');
-  const card2Grad = ctx.createLinearGradient(cardX, card2Y, cardX + cardW, card2Y + 180);
-  card2Grad.addColorStop(0, '#E85420');
-  card2Grad.addColorStop(1, '#FF6B35');
-  roundRect(ctx, cardX, card2Y, cardW, 180, 22, card2Grad);
+  const card2H = 220;
+  // subtle stacked hint
+  roundRect(ctx, cardX + 16, card2Y - 12, cardW - 32, 24, 12, '#1f6b4a');
 
-  ctx.fillStyle = '#ffffff';
-  ctx.font = '700 22px -apple-system, Inter, sans-serif';
-  ctx.fillText('Café des Alpes', cardX + 28, card2Y + 44);
-  ctx.font = '500 13px -apple-system, Inter, sans-serif';
-  ctx.fillStyle = 'rgba(255,255,255,0.8)';
-  ctx.fillText('Carte de fidélité · 8/10 tampons', cardX + 28, card2Y + 68);
+  // Card container with clipping
+  ctx.save();
+  roundRect(ctx, cardX, card2Y, cardW, card2H, 22, '#1f6b4a');
+  ctx.beginPath();
+  // clip to rounded rect
+  const rx = cardX, ry = card2Y, rw = cardW, rh = card2H, rr = 22;
+  ctx.moveTo(rx + rr, ry);
+  ctx.lineTo(rx + rw - rr, ry);
+  ctx.quadraticCurveTo(rx + rw, ry, rx + rw, ry + rr);
+  ctx.lineTo(rx + rw, ry + rh - rr);
+  ctx.quadraticCurveTo(rx + rw, ry + rh, rx + rw - rr, ry + rh);
+  ctx.lineTo(rx + rr, ry + rh);
+  ctx.quadraticCurveTo(rx, ry + rh, rx, ry + rh - rr);
+  ctx.lineTo(rx, ry + rr);
+  ctx.quadraticCurveTo(rx, ry, rx + rr, ry);
+  ctx.closePath();
+  ctx.clip();
 
-  // Stamps
-  for (let i = 0; i < 10; i++) {
-    const sx = cardX + 28 + i * 44;
-    const sy = card2Y + 110;
-    ctx.beginPath();
-    ctx.arc(sx + 14, sy + 14, 14, 0, Math.PI * 2);
-    if (i < 8) {
-      ctx.fillStyle = '#ffffff';
-      ctx.fill();
-      ctx.fillStyle = '#FF6B35';
-      ctx.font = '800 16px sans-serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('★', sx + 14, sy + 20);
-      ctx.textAlign = 'left';
+  // Draw the Fromi photo if loaded, else draw a green placeholder
+  if (fromiImgLoaded && fromiImg.naturalWidth > 0) {
+    const ir = fromiImg.naturalWidth / fromiImg.naturalHeight;
+    const cr = cardW / card2H;
+    let dw, dh, dx, dy;
+    if (ir > cr) {
+      dh = card2H;
+      dw = card2H * ir;
+      dx = cardX - (dw - cardW) / 2;
+      dy = card2Y;
     } else {
-      ctx.strokeStyle = 'rgba(255,255,255,0.5)';
-      ctx.lineWidth = 2;
-      ctx.stroke();
+      dw = cardW;
+      dh = cardW / ir;
+      dx = cardX;
+      dy = card2Y - (dh - card2H) / 2;
     }
+    ctx.drawImage(fromiImg, dx, dy, dw, dh);
+
+    // Overlay: when hovered (stamped), darken the 10 coffee stamps.
+    // Approximate stamp grid from the real card image: two rows of 5 cups
+    // positioned inside a light pane on the right side of the card.
+    if (stamped) {
+      // Adaptive dark overlays on cup locations.
+      // Coordinates tuned for the photo's composition (right pane with cups).
+      const gridX = cardX + cardW * 0.30;
+      const gridY = card2Y + card2H * 0.18;
+      const gridW = cardW * 0.62;
+      const gridH = card2H * 0.58;
+      const cols = 5, rows = 2;
+      const cellW = gridW / cols;
+      const cellH = gridH / rows;
+      for (let r = 0; r < rows; r++) {
+        for (let col = 0; col < cols; col++) {
+          const cxp = gridX + cellW * col + cellW / 2;
+          const cyp = gridY + cellH * r + cellH / 2;
+          const rad = Math.min(cellW, cellH) * 0.38;
+          // black cup overlay with warm edge
+          const g = ctx.createRadialGradient(cxp, cyp, 0, cxp, cyp, rad);
+          g.addColorStop(0, 'rgba(12, 12, 18, 0.95)');
+          g.addColorStop(0.7, 'rgba(12, 12, 18, 0.85)');
+          g.addColorStop(1, 'rgba(12, 12, 18, 0)');
+          ctx.fillStyle = g;
+          ctx.beginPath();
+          ctx.arc(cxp, cyp, rad, 0, Math.PI * 2);
+          ctx.fill();
+          // tiny white steam dot to read as stamp
+          ctx.fillStyle = 'rgba(255,255,255,0.35)';
+          ctx.beginPath();
+          ctx.arc(cxp, cyp - rad * 0.3, rad * 0.12, 0, Math.PI * 2);
+          ctx.fill();
+        }
+      }
+    }
+  } else {
+    // Fallback while image loads: solid green with text
+    const card2Grad = ctx.createLinearGradient(cardX, card2Y, cardX + cardW, card2Y + card2H);
+    card2Grad.addColorStop(0, '#1f6b4a');
+    card2Grad.addColorStop(1, '#2f8a5d');
+    ctx.fillStyle = card2Grad;
+    ctx.fillRect(cardX, card2Y, cardW, card2H);
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '700 22px -apple-system, Inter, sans-serif';
+    ctx.fillText('FROMI · Namqa Studio', cardX + 28, card2Y + 44);
   }
+  ctx.restore();
+
+  // "Testez-moi →" pill label, bottom-left of the Fromi card
+  const pillX = cardX + 18;
+  const pillY = card2Y + card2H - 46;
+  const pillW = 150, pillH = 32;
+  // pill shadow
+  ctx.save();
+  ctx.shadowColor = 'rgba(0, 0, 0, 0.35)';
+  ctx.shadowBlur = 10;
+  ctx.shadowOffsetY = 3;
+  roundRect(ctx, pillX, pillY, pillW, pillH, pillH / 2, stamped ? '#FF6B35' : '#ffffff');
+  ctx.restore();
+  ctx.fillStyle = stamped ? '#ffffff' : '#121240';
+  ctx.font = '800 13px -apple-system, Inter, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('TESTEZ-MOI', pillX + 16, pillY + 21);
+  // arrow
+  ctx.strokeStyle = stamped ? '#ffffff' : '#121240';
+  ctx.lineWidth = 2;
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+  ctx.beginPath();
+  const ax = pillX + 108;
+  const ay = pillY + pillH / 2;
+  ctx.moveTo(ax, ay);
+  ctx.lineTo(ax + 18, ay);
+  ctx.moveTo(ax + 12, ay - 5);
+  ctx.lineTo(ax + 18, ay);
+  ctx.lineTo(ax + 12, ay + 5);
+  ctx.stroke();
 
   // Home indicator
   ctx.fillStyle = 'rgba(255,255,255,0.4)';
   roundRect(ctx, W / 2 - 65, H - 20, 130, 5, 3, 'rgba(255,255,255,0.5)');
-
-  const texture = new THREE.CanvasTexture(c);
-  texture.colorSpace = THREE.SRGBColorSpace;
-  texture.anisotropy = 8;
-  texture.needsUpdate = true;
-  return texture;
 }
 
 function roundRect(ctx, x, y, w, h, r, fill) {
