@@ -235,8 +235,8 @@ h1, h2, h3, h4 {
 .hero__grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1.2fr 0.9fr;
-  gap: 48px;
+  grid-template-columns: 1fr 1.1fr;
+  gap: 36px;
   align-items: center;
   z-index: 2;
 }
@@ -309,11 +309,14 @@ h1, h2, h3, h4 {
 /* Phone 3D scene */
 .hero__phone {
   position: relative;
-  height: 680px;
+  height: 640px;
   width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* élargir légèrement pour tenir 2 téléphones */
+  margin-right: -20px;
+  margin-left: -20px;
 }
 
 #phone-canvas {
@@ -349,8 +352,10 @@ h1, h2, h3, h4 {
 /* iOS-style push notification */
 .hero__notif {
   position: absolute;
-  top: 6%;
-  right: -8px;
+  top: 3%;
+  left: 50%;
+  --fl-tx: -50%;
+  transform: translateX(-50%);
   background: rgba(255, 255, 255, 0.92);
   backdrop-filter: blur(20px) saturate(1.8);
   -webkit-backdrop-filter: blur(20px) saturate(1.8);
@@ -372,8 +377,8 @@ h1, h2, h3, h4 {
 }
 
 @keyframes float-ios {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%, 100% { transform: translate(var(--fl-tx, 0), 0); }
+  50% { transform: translate(var(--fl-tx, 0), -6px); }
 }
 
 .hero__notif__icon {
@@ -427,15 +432,15 @@ h1, h2, h3, h4 {
 
 .hero__badge {
   position: absolute;
-  bottom: 22%;
-  left: -30px;
+  bottom: 8%;
+  left: 6%;
   background: white;
   color: var(--ink);
   padding: 12px 18px;
   border-radius: 16px;
   box-shadow: var(--shadow-lg);
   z-index: 3;
-  animation: float 6s ease-in-out infinite;
+  animation: float-ios 6s ease-in-out infinite;
   animation-delay: -2s;
 }
 
