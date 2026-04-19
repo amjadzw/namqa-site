@@ -235,8 +235,8 @@ h1, h2, h3, h4 {
 .hero__grid {
   position: relative;
   display: grid;
-  grid-template-columns: 1.1fr 1fr;
-  gap: 40px;
+  grid-template-columns: 0.95fr 1.25fr;
+  gap: 24px;
   align-items: center;
   z-index: 2;
 }
@@ -306,10 +306,13 @@ h1, h2, h3, h4 {
 
 .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
 
-/* Phone 3D */
+/* Phone 3D + detached member card */
 .hero__phone {
   position: relative;
-  height: 620px;
+  height: 640px;
+  width: 100%;
+  /* Let the scene breathe to the right */
+  margin-right: -40px;
   display: flex;
   align-items: center;
   justify-content: center;
