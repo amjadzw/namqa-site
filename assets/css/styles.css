@@ -469,33 +469,37 @@ h1, h2, h3, h4 {
   flex-shrink: 0;
 }
 
-/* Annotation gauche : haut-gauche du téléphone, pointe vers carte membre */
+/* Annotation gauche : pointe pile sur la carte Bernard Arnault */
 .hero__note--left {
-  top: 34%;
-  left: -6%;
+  top: 22%;
+  left: -4%;
   flex-direction: column;
   align-items: flex-start;
   text-align: left;
 }
 .hero__note--left .hero__note__arrow {
-  margin-left: 30px;
-  margin-top: -2px;
+  width: 110px;
+  height: 78px;
+  margin-left: 70px;
+  margin-top: -4px;
 }
 
-/* Annotation droite : milieu-droit, pointe vers code-barres */
+/* Annotation droite : pointe pile sur le code-barres */
 .hero__note--right {
-  top: 44%;
-  right: -8%;
+  top: 36%;
+  right: -6%;
   flex-direction: column;
   align-items: flex-end;
   text-align: right;
 }
 .hero__note--right .hero__note__arrow {
-  margin-right: 30px;
-  margin-bottom: -2px;
+  width: 110px;
+  height: 56px;
+  margin-right: 50px;
+  margin-top: -2px;
   order: 2;
 }
-.hero__note--right .hero__note__text { order: 1; margin-bottom: -4px; }
+.hero__note--right .hero__note__text { order: 1; margin-bottom: -2px; }
 
 @media (max-width: 900px) {
   .hero__note { display: none; }
