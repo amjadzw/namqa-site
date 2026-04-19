@@ -1,20 +1,20 @@
 /* ======================================================
    NAMQA STUDIO — Programme de fidélité
-   DA: Indigo monochromatique + Blanc cassé — Swiss premium
+   DA: Bleu électrique + Orange vif + Blanc cassé
    ====================================================== */
 
 :root {
-  /* Colors — Indigo monochromatic palette */
-  --violet: #2E2E80;           /* primary indigo (brand) */
-  --violet-dark: #1F1F5E;      /* darker indigo */
-  --violet-deeper: #121240;    /* deepest indigo (hero, footer) */
-  --violet-light: #6A6AD1;     /* light indigo */
-  --violet-soft: #E6E6F2;      /* very soft indigo tint */
+  /* Colors — Electric blue as brand base */
+  --violet: #1E40FF;           /* electric blue (primary / brand) */
+  --violet-dark: #1530CC;      /* darker electric blue */
+  --violet-deeper: #0A1B8C;    /* deep blue (hero, footer) */
+  --violet-light: #5A75FF;     /* light electric blue */
+  --violet-soft: #DCE3FF;      /* soft blue tint */
 
-  /* Accent = bright indigo (replaces former orange) */
-  --orange: #4F4FC9;           /* accent highlight */
-  --orange-dark: #3838A8;      /* accent hover */
-  --orange-soft: #DCDCF5;      /* accent bg tint */
+  /* Accent = vivid orange (flashy accents: CTAs, highlights, titles) */
+  --orange: #FF6B35;           /* vivid orange */
+  --orange-dark: #E85420;      /* darker orange */
+  --orange-soft: #FFE4D9;      /* soft orange tint */
 
   /* Neutrals */
   --cream: #FEFDF7;            /* off-white */
@@ -850,7 +850,7 @@ section { position: relative; }
 .step__num {
   width: 72px;
   height: 72px;
-  background: linear-gradient(135deg, var(--orange) 0%, #7878DE 100%);
+  background: linear-gradient(135deg, var(--orange) 0%, #FF8C66 100%);
   color: white;
   font-family: var(--font-display);
   font-size: 28px;
@@ -997,7 +997,7 @@ section { position: relative; }
   font-size: 96px;
   font-weight: 700;
   line-height: 1;
-  background: linear-gradient(135deg, var(--orange) 0%, #9292E8 100%);
+  background: linear-gradient(135deg, var(--orange) 0%, #FFB894 100%);
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;

@@ -9,7 +9,29 @@
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
 
-# Ensure JSON content is served with correct MIME type and no aggressive caching
+# Force fresh HTML on every visit so users always see the latest design/content
+[[headers]]
+  for = "/"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# Always fetch the latest JS/CSS (quick reload after rebrand)
+[[headers]]
+  for = "/assets/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  for = "/assets/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+# JSON content (CMS-edited) — short cache so Decap edits appear quickly
 [[headers]]
   for = "/content/*.json"
   [headers.values]

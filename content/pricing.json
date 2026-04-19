@@ -11,11 +11,11 @@
       "name": "Essentiel",
       "featured": false,
       "subtitle": "Lancez votre carte de fidélité digitale en quelques jours",
-      "amount": "49",
+      "amount": "80",
       "cta_href": "#contact",
       "features": [
         "Carte digitale Apple/Google Wallet",
-        "Jusqu'à 500 clients",
+        "Jusqu'à 200 clients",
         "Système de points simple",
         "Support par email"
       ]
@@ -27,11 +27,11 @@
       "name": "Premium",
       "featured": true,
       "subtitle": "Notre solution complète pour les commerces ambitieux",
-      "amount": "99",
+      "amount": "120",
       "tag": "Le + populaire",
       "cta_href": "#contact",
       "features": [
-        "Tout Essentiel, sans limite de clients",
+        "Tout Essentiel, jusqu'à 500 clients",
         "Notifications push illimitées",
         "Cashback & récompenses avancées",
         "Tableau de bord analytics complet",
@@ -39,13 +39,13 @@
       ]
     },
     {
-      "period": "CHF / mois",
-      "cta_label": "En savoir plus",
+      "period": "",
+      "cta_label": "Nous contacter",
       "price_prefix": "",
       "name": "Enterprise",
       "featured": false,
       "subtitle": "Pour les réseaux multi-enseignes et franchises",
-      "amount": "149",
+      "amount": "Sur mesure",
       "cta_href": "#contact",
       "features": [
         "Tout Premium inclus",
