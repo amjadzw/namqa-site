@@ -345,6 +345,34 @@
     }
   }
 
+  // ---------------- CONTACT ----------------
+  function renderContact(data) {
+    if (!data) return;
+    const intro = q(".contact-intro");
+    if (intro) {
+      intro.innerHTML = `
+        <h2 class="contact-intro__title">
+          <span>${esc(data.title_line1)}</span>
+          <span class="contact-intro__soft">${esc(data.title_line2)}</span>
+        </h2>
+        <p class="contact-intro__sub">${esc(data.subtitle)}</p>
+      `;
+    }
+    // Fill sectors dropdown
+    const sectorSel = document.getElementById("cf-secteur");
+    if (sectorSel && Array.isArray(data.sectors)) {
+      data.sectors.forEach(s => {
+        const opt = document.createElement("option");
+        opt.value = s;
+        opt.textContent = s;
+        sectorSel.appendChild(opt);
+      });
+    }
+    // Submit button label
+    const submitLabel = q(".btn--submit .btn__label");
+    if (submitLabel) submitLabel.textContent = data.submit_label || "Contactez-nous";
+  }
+
   // ---------------- FOOTER ----------------
   function renderFooter(data) {
     const top = q(".footer__top");
@@ -378,7 +406,7 @@
   // ---------------- MAIN ----------------
   async function init() {
     try {
-      const [nav, hero, marquee, features, benefits, pricing, steps, testimonials, solutions, faq, finalCta, footer] = await Promise.all([
+      const [nav, hero, marquee, features, benefits, pricing, steps, testimonials, solutions, faq, finalCta, contact, footer] = await Promise.all([
         loadJSON("content/nav.json"),
         loadJSON("content/hero.json"),
         loadJSON("content/marquee.json"),
@@ -390,6 +418,7 @@
         loadJSON("content/solutions.json"),
         loadJSON("content/faq.json"),
         loadJSON("content/final_cta.json"),
+        loadJSON("content/contact.json"),
         loadJSON("content/footer.json"),
       ]);
 
@@ -404,6 +433,7 @@
       renderSolutions(solutions);
       renderFaq(faq);
       renderFinalCta(finalCta);
+      renderContact(contact);
       renderFooter(footer);
 
       // Re-init Lucide icons after DOM changes

@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Merci — Namqa Studio</title>
+  <meta name="theme-color" content="#2E2E80" />
+  <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <main class="thankyou">
+    <div class="thankyou__card">
+      <div class="thankyou__check" aria-hidden="true">
+        <svg viewBox="0 0 64 64" width="48" height="48">
+          <circle cx="32" cy="32" r="30" fill="#FF6B35"/>
+          <path d="M18 33 L28 43 L47 22" fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <h1>Merci !</h1>
+      <p>Votre message est bien arrivé — notre équipe vous recontacte dans les 2&nbsp;heures.</p>
+      <a href="/" class="btn btn--primary">Retour à l'accueil <span class="btn__arrow">→</span></a>
+    </div>
+  </main>
+  <style>
+    .thankyou { min-height: 100vh; display: grid; place-items: center;
+      background: linear-gradient(135deg, var(--violet-deeper) 0%, var(--violet) 100%);
+      padding: 24px; }
+    .thankyou__card { background: var(--cream); border-radius: var(--radius-lg);
+      padding: clamp(40px, 6vw, 72px); max-width: 560px; text-align: center;
+      box-shadow: var(--shadow-lg); }
+    .thankyou__check { display: inline-flex; margin-bottom: 20px; }
+    .thankyou h1 { font-family: var(--font-display); font-size: clamp(40px, 5vw, 56px);
+      color: var(--ink); margin-bottom: 14px; }
+    .thankyou p { color: var(--ink-soft); font-size: 17px; line-height: 1.6;
+      margin-bottom: 28px; }
+  </style>
+</body>
+</html>

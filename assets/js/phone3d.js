@@ -360,9 +360,9 @@ function createWalletCardTexture() {
 
   // Card gradient (Namqa violet)
   const cardGrad = ctx.createLinearGradient(cardX, cardY, cardX + cardW, cardY + cardH);
-  cardGrad.addColorStop(0, '#3B5BFF');
-  cardGrad.addColorStop(0.5, '#1E40FF');
-  cardGrad.addColorStop(1, '#0A1B8C');
+  cardGrad.addColorStop(0, '#4F4FC9');
+  cardGrad.addColorStop(0.5, '#2E2E80');
+  cardGrad.addColorStop(1, '#121240');
   roundRect(ctx, cardX, cardY, cardW, cardH, radius, cardGrad);
 
   // subtle sheen
@@ -412,7 +412,7 @@ function createWalletCardTexture() {
   roundRect(ctx, cardX, barcodeY, cardW, 130, 20, '#ffffff');
 
   // Barcode pattern
-  ctx.fillStyle = '#0A1B8C';
+  ctx.fillStyle = '#121240';
   const bStartX = cardX + 40;
   const bW = cardW - 80;
   const lines = 52;
@@ -424,7 +424,7 @@ function createWalletCardTexture() {
   }
 
   // Barcode number
-  ctx.fillStyle = '#0A1B8C';
+  ctx.fillStyle = '#121240';
   ctx.font = '600 14px -apple-system, Inter, sans-serif';
   ctx.textAlign = 'center';
   ctx.fillText('4 2 7 8 8 9 1 2 0 2 4 8', cardX + cardW / 2, barcodeY + 108);

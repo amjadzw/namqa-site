@@ -268,6 +268,27 @@ collections:
           - { label: "Lien du bouton (email/URL)", name: "cta_href", widget: "string" }
           - { label: "Micro-texte sous le bouton", name: "microcopy", widget: "string" }
 
+  # ---------- CONTACT ----------
+  - name: "contact"
+    label: "✉️ Contact (formulaire)"
+    files:
+      - name: "contact"
+        label: "Section contact"
+        file: "content/contact.json"
+        format: "json"
+        fields:
+          - { label: "Titre — ligne 1", name: "title_line1", widget: "string" }
+          - { label: "Titre — ligne 2 (violet)", name: "title_line2", widget: "string" }
+          - { label: "Sous-titre", name: "subtitle", widget: "text" }
+          - { label: "Email de réception (info only — à configurer dans Netlify)", name: "recipient_email", widget: "string", required: false }
+          - label: "Secteurs d'activité (dropdown)"
+            name: "sectors"
+            widget: "list"
+            field: { label: "Secteur", name: "sector", widget: "string" }
+          - { label: "Libellé du bouton d'envoi", name: "submit_label", widget: "string" }
+          - { label: "Titre page de succès", name: "success_title", widget: "string" }
+          - { label: "Message de succès", name: "success_message", widget: "text" }
+
   # ---------- FOOTER ----------
   - name: "footer"
     label: "🦶 Pied de page"

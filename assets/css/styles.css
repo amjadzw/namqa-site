@@ -1,17 +1,17 @@
 /* ======================================================
    NAMQA STUDIO — Programme de fidélité
-   DA: Bleu électrique + Orange vif + Blanc cassé
+   DA: Indigo profond + Halo violet + Orange vif + Blanc cassé
    ====================================================== */
 
 :root {
-  /* Colors — Electric blue as brand base */
-  --violet: #1E40FF;           /* electric blue (primary / brand) */
-  --violet-dark: #1530CC;      /* darker electric blue */
-  --violet-deeper: #0A1B8C;    /* deep blue (hero, footer) */
-  --violet-light: #5A75FF;     /* light electric blue */
-  --violet-soft: #DCE3FF;      /* soft blue tint */
+  /* Colors — Deep indigo/violet as brand base */
+  --violet: #2E2E80;           /* indigo primary (brand) */
+  --violet-dark: #25206B;      /* deep indigo (hero background) */
+  --violet-deeper: #1A1650;    /* deepest indigo (footer / richest fill) */
+  --violet-light: #4F4FC9;     /* lighter violet (secondary, halo) */
+  --violet-soft: #E8E5FF;      /* soft violet tint */
 
-  /* Accent = vivid orange (flashy accents: CTAs, highlights, titles) */
+  /* Accent = vivid orange (CTAs, highlights, title accents) */
   --orange: #FF6B35;           /* vivid orange */
   --orange-dark: #E85420;      /* darker orange */
   --orange-soft: #FFE4D9;      /* soft orange tint */
@@ -40,10 +40,10 @@
   --transition: 180ms var(--ease-out);
 
   /* Shadows */
-  --shadow-sm: 0 2px 8px rgba(31, 31, 94, 0.08);
-  --shadow-md: 0 8px 32px rgba(31, 31, 94, 0.12);
-  --shadow-lg: 0 20px 60px rgba(31, 31, 94, 0.18);
-  --shadow-orange: 0 12px 40px rgba(79, 79, 201, 0.35);
+  --shadow-sm: 0 2px 8px rgba(46, 46, 128, 0.08);
+  --shadow-md: 0 8px 32px rgba(46, 46, 128, 0.12);
+  --shadow-lg: 0 20px 60px rgba(46, 46, 128, 0.18);
+  --shadow-orange: 0 12px 40px rgba(255, 107, 53, 0.35);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -1112,6 +1112,160 @@ section { position: relative; }
 }
 
 .final-cta .btn { position: relative; }
+
+/* ===== CONTACT SECTION ===== */
+.contact-section {
+  padding: clamp(80px, 10vw, 140px) 0;
+  background: var(--cream);
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: clamp(48px, 6vw, 96px);
+  align-items: start;
+}
+
+.contact-intro__title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.8vw, 52px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  text-transform: uppercase;
+  margin-bottom: 24px;
+  display: block;
+}
+.contact-intro__title span { display: block; }
+.contact-intro__title .contact-intro__soft {
+  color: var(--violet);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.contact-intro__sub {
+  font-size: 17px;
+  color: var(--ink-soft);
+  line-height: 1.65;
+  max-width: 440px;
+}
+
+.contact-form {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  padding: clamp(28px, 3.5vw, 44px);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(46, 46, 128, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+}
+
+.contact-form__row {
+  display: grid;
+  gap: 18px;
+}
+.contact-form__row--3 { grid-template-columns: 1fr 1fr 1fr; }
+.contact-form__row--2 { grid-template-columns: 1fr 1fr; }
+
+.field { display: flex; flex-direction: column; gap: 7px; min-width: 0; }
+.field label {
+  font-family: var(--font-display);
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.field .req { color: var(--orange); margin-left: 2px; }
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  font: inherit;
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+  padding: 13px 16px;
+  border-radius: 14px;
+  border: 1.5px solid rgba(46, 46, 128, 0.14);
+  background: var(--cream);
+  transition: border-color var(--transition), box-shadow var(--transition), background var(--transition);
+  outline: none;
+}
+.field textarea { resize: vertical; min-height: 110px; }
+.field input::placeholder,
+.field textarea::placeholder { color: rgba(74, 74, 122, 0.5); }
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: rgba(46, 46, 128, 0.28); }
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+  border-color: var(--violet);
+  background: var(--white);
+  box-shadow: 0 0 0 4px rgba(46, 46, 128, 0.10);
+}
+
+/* Custom select arrow */
+.select-wrap {
+  position: relative;
+  width: 100%;
+}
+.select-wrap::after {
+  content: "";
+  position: absolute;
+  right: 18px; top: 50%;
+  width: 10px; height: 10px;
+  border-right: 2px solid var(--ink-soft);
+  border-bottom: 2px solid var(--ink-soft);
+  transform: translateY(-70%) rotate(45deg);
+  pointer-events: none;
+}
+.select-wrap select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 44px;
+  cursor: pointer;
+}
+
+.phone-row {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 10px;
+}
+.select-wrap--country { width: 100%; }
+.select-wrap--country select { padding-right: 38px; }
+
+.btn--submit {
+  margin-top: 8px;
+  align-self: flex-start;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  font-size: 14px;
+  padding: 16px 32px;
+}
+.contact-form__note {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: -6px;
+}
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px;
+  padding: 0; margin: -1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .contact-form__row--3 { grid-template-columns: 1fr; }
+  .contact-form__row--2 { grid-template-columns: 1fr; }
+  .phone-row { grid-template-columns: 140px 1fr; }
+}
 
 /* ===== FOOTER ===== */
 .footer {
