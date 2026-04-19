@@ -1,30 +1,21 @@
 /* ==========================================================
-   NAMQA — Hero 3D scene (v6)
-   UN SEUL téléphone centré, 3 sections empilées dans l'écran :
+   NAMQA — Hero 3D scene (v7)
+   UN SEUL téléphone centré, sections empilées dans l'écran :
      1. Header « Cartes » + search
-     2. Carte membre premium Bernard Arnault (style v5)
+     2. Carte membre premium Bernard Arnault
      3. Code-barres blanc
-     4. Carte Fromi photo réelle avec hover « glow » doux sur tasses
+     4. Widget « Solde fidélité » (rendu iOS notif)
    Châssis iPhone style v2/v3 (titane sombre, Dynamic Island, camera bump)
    ========================================================== */
 
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
-// ===== Assets =====
-const fromiImg = new Image();
-let fromiImgLoaded = false;
-fromiImg.crossOrigin = 'anonymous';
-fromiImg.src = 'assets/images/carte-fromi.jpg';
-fromiImg.onload = () => { fromiImgLoaded = true; };
-
 // État global
 const state = {
   screen: {
     dirty: true,
-    shine: 0,                    // reflet animé sur la carte membre
-    hoverIdx: -1,                // index de la tasse survolée, -1 sinon
-    glow: new Array(10).fill(0), // intensité du glow par tasse, 0..1
+    shine: 0, // reflet animé sur la carte membre
   },
 };
 
@@ -73,7 +64,7 @@ function initScene() {
   const screenCanvas = document.createElement('canvas');
   screenCanvas.width = SCREEN_W;
   screenCanvas.height = SCREEN_H;
-  drawScreen(screenCanvas, { shine: 0, hover: false, glow: state.screen.glow });
+  drawScreen(screenCanvas, { shine: 0, hover: false });
 
   const { group: phone, screenMesh, screenTexture: tex, W: PW, H: PH } =
     buildPhone(screenCanvas);
@@ -106,20 +97,6 @@ function initScene() {
   // ===== Raycasting =====
   const raycaster = new THREE.Raycaster();
   const mouse = new THREE.Vector2();
-
-  // Zone de la carte Fromi dans l'écran (photo)
-  const FROMI_CARD = { x: 24, y: 694, w: SCREEN_W - 48, h: 360 };
-  const CUP_CENTERS_UV = [];
-  const CUP_FRAC_X = [0.148, 0.323, 0.497, 0.673, 0.847];
-  const CUP_FRAC_Y = [0.220, 0.340];
-  for (const fy of CUP_FRAC_Y) {
-    for (const fx of CUP_FRAC_X) {
-      const px = FROMI_CARD.x + FROMI_CARD.w * fx;
-      const py = FROMI_CARD.y + FROMI_CARD.h * fy;
-      CUP_CENTERS_UV.push([px / SCREEN_W, py / SCREEN_H]);
-    }
-  }
-  const CUP_HIT_R = (FROMI_CARD.w * 0.057) / SCREEN_W;
 
   // Carte membre — UV pour le reflet hover
   const MC_AREA = { x: 24, y: 200, w: SCREEN_W - 48, h: 300 };
@@ -170,27 +147,6 @@ function initScene() {
         state.screen.shine = (tx - MC_UV.x0) / (MC_UV.x1 - MC_UV.x0);
         state.screen.dirty = true;
       }
-
-      // Détection tasse Fromi
-      let hit = -1;
-      for (let i = 0; i < CUP_CENTERS_UV.length; i++) {
-        const [cx, cy] = CUP_CENTERS_UV[i];
-        const dx = tx - cx;
-        const dy = ty - cy;
-        if (dx * dx + dy * dy <= CUP_HIT_R * CUP_HIT_R) {
-          hit = i;
-          break;
-        }
-      }
-      if (hit !== state.screen.hoverIdx) {
-        state.screen.hoverIdx = hit;
-        state.screen.dirty = true;
-      }
-    } else if (!uv && !drag.active) {
-      if (state.screen.hoverIdx !== -1) {
-        state.screen.hoverIdx = -1;
-        state.screen.dirty = true;
-      }
     }
 
     if (!drag.active) {
@@ -218,14 +174,8 @@ function initScene() {
   canvas.addEventListener('pointercancel', onUp);
   canvas.addEventListener('pointerleave', () => {
     if (drag.active) onUp();
-    if (state.screen.hoverIdx !== -1) {
-      state.screen.hoverIdx = -1;
-      state.screen.dirty = true;
-    }
   });
   canvas.addEventListener('touchmove', (e) => { if (drag.active) e.preventDefault(); }, { passive: false });
-
-  fromiImg.addEventListener('load', () => { state.screen.dirty = true; }, { once: true });
 
   // Resize
   const onResize = () => {
@@ -274,18 +224,9 @@ function initScene() {
     if (autoShine > 1.6) autoShine = -0.2;
     const shineVal = drag.active ? state.screen.shine : autoShine;
 
-    // Glow tasses : interpolation
-    let glowChanged = false;
-    for (let i = 0; i < 10; i++) {
-      const target = i === state.screen.hoverIdx ? 1 : 0;
-      const prev = state.screen.glow[i];
-      state.screen.glow[i] += (target - prev) * Math.min(1, dt * 8);
-      if (Math.abs(state.screen.glow[i] - prev) > 0.003) glowChanged = true;
-    }
-
     // Redraw écran
-    if (state.screen.dirty || glowChanged || Math.abs(shineVal - (state.screen._lastShine || -2)) > 0.01) {
-      drawScreen(tex.image, { shine: shineVal, hover: drag.active, glow: state.screen.glow });
+    if (state.screen.dirty || Math.abs(shineVal - (state.screen._lastShine || -2)) > 0.01) {
+      drawScreen(tex.image, { shine: shineVal, hover: drag.active });
       tex.needsUpdate = true;
       state.screen.dirty = false;
       state.screen._lastShine = shineVal;
@@ -386,7 +327,7 @@ function buildPhone(screenCanvas) {
 function drawScreen(c, opts = {}) {
   const ctx = c.getContext('2d');
   const W = c.width, H = c.height;
-  const { shine = 0, hover = false, glow = [] } = opts;
+  const { shine = 0, hover = false } = opts;
 
   // Fond Wallet sombre
   const bg = ctx.createLinearGradient(0, 0, 0, H);
@@ -630,85 +571,115 @@ function drawScreen(c, opts = {}) {
   ctx.fillText('4 278 8912 0248', BC.x + BC.w / 2, BC.y + BC.h - 16);
   ctx.textAlign = 'left';
 
-  // ========= CARTE FROMI photo réelle =========
-  const FROMI = { x: 24, y: 694, w: W - 48, h: 360 };
+  // ========= WIDGET SOLDE FIDÉLITÉ (style iOS notif) =========
+  const SF = { x: 24, y: 680, w: W - 48, h: 108 };
+  // Fond blanc translucide sur carré sombre => simulé par blanc opaque premium
   ctx.save();
-  roundRectPath(ctx, FROMI.x, FROMI.y, FROMI.w, FROMI.h, 20);
-  ctx.clip();
-  ctx.fillStyle = '#3A7B3A';
-  ctx.fillRect(FROMI.x, FROMI.y, FROMI.w, FROMI.h);
+  roundRectPath(ctx, SF.x, SF.y, SF.w, SF.h, 20);
+  // Fond blanc légèrement cassé (effet « frosted » sur fond noir)
+  const sfBg = ctx.createLinearGradient(SF.x, SF.y, SF.x, SF.y + SF.h);
+  sfBg.addColorStop(0, 'rgba(255, 255, 255, 0.97)');
+  sfBg.addColorStop(1, 'rgba(248, 248, 252, 0.94)');
+  ctx.fillStyle = sfBg;
+  ctx.fill();
+  // Liseré interne blanc pur (simule inset white highlight de la notif iOS)
+  ctx.save();
+  roundRectPath(ctx, SF.x + 0.5, SF.y + 0.5, SF.w - 1, SF.h - 1, 19.5);
+  ctx.strokeStyle = 'rgba(255, 255, 255, 0.95)';
+  ctx.lineWidth = 1;
+  ctx.stroke();
+  ctx.restore();
+  ctx.restore();
 
-  if (fromiImgLoaded && fromiImg.naturalWidth > 0) {
-    // Crop bord blanc + cover
-    const srcPad = 0.035;
-    const srcX0 = fromiImg.naturalWidth * srcPad;
-    const srcY0 = fromiImg.naturalHeight * srcPad;
-    const srcFullW = fromiImg.naturalWidth * (1 - srcPad * 2);
-    const srcFullH = fromiImg.naturalHeight * (1 - srcPad * 2);
-    const srcR = srcFullW / srcFullH;
-    const dstR = FROMI.w / FROMI.h;
-    let sx, sy, sw, sh;
-    if (srcR > dstR) {
-      sh = srcFullH;
-      sw = srcFullH * dstR;
-      sx = srcX0 + (srcFullW - sw) / 2;
-      sy = srcY0;
-    } else {
-      sw = srcFullW;
-      sh = srcFullW / dstR;
-      sx = srcX0;
-      sy = srcY0 + (srcFullH - sh) * 0.05;
-    }
-    ctx.drawImage(fromiImg, sx, sy, sw, sh, FROMI.x, FROMI.y, FROMI.w, FROMI.h);
-  }
+  // Icône orange à gauche (bell) dans un carré arrondi dégradé
+  const ICON = { x: SF.x + 18, y: SF.y + 22, s: 64 };
+  ctx.save();
+  roundRectPath(ctx, ICON.x, ICON.y, ICON.s, ICON.s, 14);
+  const ig = ctx.createLinearGradient(ICON.x, ICON.y, ICON.x + ICON.s, ICON.y + ICON.s);
+  ig.addColorStop(0, '#FF8A5C');
+  ig.addColorStop(1, '#FF6B35');
+  ctx.fillStyle = ig;
+  ctx.fill();
+  ctx.restore();
+  // étoile dorée dans l'icône
+  drawStar(ctx, ICON.x + ICON.s / 2, ICON.y + ICON.s / 2, 5, 16, 7, '#FFFFFF');
+  drawStar(ctx, ICON.x + ICON.s / 2, ICON.y + ICON.s / 2, 5, 10, 4, '#FFD166');
 
-  // Hover glow doux sur tasses
-  const cupsRel = [
-    [0.148, 0.220], [0.323, 0.220], [0.497, 0.220], [0.673, 0.220], [0.847, 0.220],
-    [0.148, 0.340], [0.323, 0.340], [0.497, 0.340], [0.673, 0.340], [0.847, 0.340],
+  // Texte label « SOLDE FIDÉLITÉ »
+  const TX = ICON.x + ICON.s + 18;
+  ctx.fillStyle = 'rgba(30, 30, 44, 0.55)';
+  ctx.font = '700 13px -apple-system, "SF Pro Display", Inter, sans-serif';
+  ctx.textAlign = 'left';
+  ctx.fillText('SOLDE FIDÉLITÉ', TX, SF.y + 38);
+  // « maintenant » à droite
+  ctx.fillStyle = 'rgba(30, 30, 44, 0.45)';
+  ctx.font = '400 13px -apple-system, "SF Pro Display", Inter, sans-serif';
+  ctx.textAlign = 'right';
+  ctx.fillText('maintenant', SF.x + SF.w - 18, SF.y + 38);
+
+  // Valeur grande « 1 240 »
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#121240';
+  ctx.font = '900 38px "Space Grotesk", Inter, sans-serif';
+  ctx.fillText('1 240', TX, SF.y + 82);
+  const vW = ctx.measureText('1 240').width;
+  // « pts » orange
+  ctx.fillStyle = '#FF6B35';
+  ctx.font = '800 17px "Space Grotesk", Inter, sans-serif';
+  ctx.fillText('pts', TX + vW + 10, SF.y + 82);
+
+  // ========= DERNIÈRE ACTIVITÉ (bloc sombre) =========
+  const ACT = { x: 24, y: 808, w: W - 48, h: 244 };
+  roundRect(ctx, ACT.x, ACT.y, ACT.w, ACT.h, 18, '#1c1c28');
+  // Titre
+  ctx.fillStyle = 'rgba(255,255,255,0.55)';
+  ctx.font = '700 11px Inter, sans-serif';
+  ctx.fillText('DERNIÈRE ACTIVITÉ', ACT.x + 20, ACT.y + 28);
+
+  // 3 lignes d'activité
+  const rows = [
+    { label: 'Achat — Café des Alpes', date: 'Aujourd’hui', amt: '+24 pts', pos: true },
+    { label: 'Récompense utilisée', date: 'Hier', amt: '−50 pts', pos: false },
+    { label: 'Bonus bienvenue', date: '12 avr.', amt: '+100 pts', pos: true },
   ];
-  const cupR = FROMI.w * 0.057;
-
-  cupsRel.forEach(([xr, yr], i) => {
-    const amt = glow[i] || 0;
-    if (amt < 0.02) return;
-    const px = FROMI.x + FROMI.w * xr;
-    const py = FROMI.y + FROMI.h * yr;
-
-    // Halo radial orange
+  rows.forEach((r, i) => {
+    const ry = ACT.y + 58 + i * 58;
+    // pastille ronde icône
+    const cx = ACT.x + 34, cy = ry + 14;
     ctx.save();
-    const glowG = ctx.createRadialGradient(px, py, cupR * 0.4, px, py, cupR * 2.2);
-    glowG.addColorStop(0, `rgba(255, 180, 90, ${amt * 0.55})`);
-    glowG.addColorStop(0.5, `rgba(255, 107, 53, ${amt * 0.25})`);
-    glowG.addColorStop(1, 'rgba(255, 107, 53, 0)');
-    ctx.fillStyle = glowG;
-    ctx.fillRect(px - cupR * 2.5, py - cupR * 2.5, cupR * 5, cupR * 5);
-    ctx.restore();
-
-    // Anneau fin orange
-    ctx.save();
-    ctx.globalAlpha = amt * 0.8;
-    ctx.strokeStyle = '#FFB156';
-    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(px, py, cupR + 2, 0, Math.PI * 2);
-    ctx.stroke();
-    ctx.restore();
-
-    // Brillance blanche centrale
-    ctx.save();
-    ctx.globalAlpha = amt * 0.35;
-    const sh = ctx.createRadialGradient(px - cupR * 0.3, py - cupR * 0.3, 0, px - cupR * 0.3, py - cupR * 0.3, cupR * 0.7);
-    sh.addColorStop(0, 'rgba(255,255,255,0.9)');
-    sh.addColorStop(1, 'rgba(255,255,255,0)');
-    ctx.fillStyle = sh;
-    ctx.beginPath();
-    ctx.arc(px, py, cupR, 0, Math.PI * 2);
+    ctx.arc(cx, cy, 16, 0, Math.PI * 2);
+    ctx.fillStyle = r.pos ? 'rgba(255, 107, 53, 0.16)' : 'rgba(255, 255, 255, 0.08)';
     ctx.fill();
     ctx.restore();
-  });
+    // symbole dans la pastille (+ ou -)
+    ctx.fillStyle = r.pos ? '#FF8A5C' : 'rgba(255,255,255,0.7)';
+    ctx.font = '900 14px "Space Grotesk", sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(r.pos ? '+' : '−', cx, cy + 5);
 
-  ctx.restore();
+    // label
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#ffffff';
+    ctx.font = '600 14px Inter, sans-serif';
+    ctx.fillText(r.label, ACT.x + 62, ry + 12);
+    // date
+    ctx.fillStyle = 'rgba(255,255,255,0.45)';
+    ctx.font = '500 12px Inter, sans-serif';
+    ctx.fillText(r.date, ACT.x + 62, ry + 30);
+    // montant
+    ctx.fillStyle = r.pos ? '#FFB156' : 'rgba(255,255,255,0.6)';
+    ctx.font = '800 14px "Space Grotesk", sans-serif';
+    ctx.textAlign = 'right';
+    ctx.fillText(r.amt, ACT.x + ACT.w - 20, ry + 20);
+    ctx.textAlign = 'left';
+
+    // séparateur
+    if (i < rows.length - 1) {
+      ctx.fillStyle = 'rgba(255,255,255,0.06)';
+      ctx.fillRect(ACT.x + 62, ry + 48, ACT.w - 82, 1);
+    }
+  });
 
   // Home indicator
   roundRect(ctx, W / 2 - 66, H - 22, 132, 4, 2, 'rgba(255,255,255,0.55)');
