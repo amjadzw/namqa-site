@@ -37,3 +37,14 @@
   [headers.values]
     Content-Type = "application/json; charset=utf-8"
     Cache-Control = "public, max-age=60, must-revalidate"
+
+# Raccourcis vers le jeu Namqa Rush (hébergé séparément sur rush.namqa.ch)
+[[redirects]]
+  from = "/rush"
+  to = "https://rush.namqa.ch/"
+  status = 302
+
+[[redirects]]
+  from = "/jeu"
+  to = "https://rush.namqa.ch/"
+  status = 302
